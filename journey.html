@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>NurtureLoop</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#ffffff", "surface-container-highest": "#e7e1de", "inverse-surface": "#32302e", "surface-variant": "#e7e1de", "on-primary-fixed": "#3a0b00", "surface-bright": "#fef8f4", "secondary-fixed": "#d8e7d5", "on-tertiary-fixed": "#2a1800", "tertiary-fixed-dim": "#fdba5e", "surface-container-lowest": "#ffffff", "secondary-container": "#d8e7d5", "on-primary-fixed-variant": "#783119", "secondary-fixed-dim": "#bccab9", "on-tertiary-container": "#fffbff", "surface-container-low": "#f8f2ef", "outline-variant": "#dac1ba", "primary": "#93452b", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#643f00", "secondary": "#556254", "tertiary-container": "#a06911", "inverse-on-surface": "#f6f0ec", "on-error-container": "#93000a", "background": "#fef8f4", "primary-container": "#b25d41", "on-secondary": "#ffffff", "tertiary": "#815200", "error-container": "#ffdad6", "primary-fixed": "#ffdbd0", "on-secondary-fixed": "#131e13", "on-surface": "#1d1b19", "surface-dim": "#ded9d5", "inverse-primary": "#ffb59e", "surface-container": "#f3ede9", "on-secondary-fixed-variant": "#3d4a3d", "error": "#ba1a1a", "on-secondary-container": "#5b685a", "on-tertiary": "#ffffff", "on-surface-variant": "#55433d", "on-background": "#1d1b19", "surface-tint": "#96472d", "surface-container-high": "#ede7e3", "outline": "#88726c", "surface": "#fef8f4", "on-primary-container": "#fffbff", "primary-fixed-dim": "#ffb59e", "tertiary-fixed": "#ffddb6" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "margin": "1.25rem", "space-lg": "1.5rem", "gutter-tablet": "1.5rem", "gutter": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Playfair Display"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Playfair Display"], "display-mobile": ["Playfair Display"], "headline-lg": ["Playfair Display"], "title-md": ["Plus Jakarta Sans"], "display": ["Playfair Display"], "title-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}.no-scrollbar::-webkit-scrollbar{display:none;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(37,35,33,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="NurtureLoop Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNdSN2WCQR-SlUGrJZ7u9BRe_XRR1HU7rBtnVWxwnR2OnqPMqX9NnkltFHsrRN_THy02YVU5UEjQGdt2zPK25DSf2Z5d0Bix2e--68vAjhKovoW0Zwb3eKUGRtMDidX5O7wkUFDGBdwh8AVMTgSUjKVPjQ1tmrAeul92Q_-SQ6Fzw00prlecFNbQ3CXge04Z4ZwhCoc62L1zS7JwzaBK8axHZRhSZbXwqVIuCvk_akHeSEYXBlaL_LXQ"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary tracking-tight leading-none">NurtureLoop</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">Journey</span></div></div><div class="flex items-center"><a class="relative p-0.5 rounded-full ring-1 ring-outline-variant/60 hover:ring-primary transition-all duration-300" data-path="more" href="more.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDu0XxIVZ0WCEK8Rt4FnrCpDDWAnbwWAG_2nj4z0bJz8ts0cSplq4eOfa3B-E3miBvRk0ZO7KUhJ5mXSDeBzKgzm-0j3kb5XNfyP3s2e7p0jYqWtdy5fAJHu3APgpLmm9p3TiBjaE7o0ONhcJt9d2HLQ6Obg0W3b5gUMWR9KZIlBsvpxzUtufK0vdW1UdqHpp2YWvU9_2NbbhLMI0myKWZxhSXbPAoxrqV72GRMoHRqs1C7wpuum10VfQ"/></a></div></div></header><main class="flex-1 w-full pt-16 bg-surface pb-24"><div class="flex flex-col w-full">
+<div class="hidden" data-nl-offline-panel></div>
+<div class="px-margin pt-space-md pb-space-xs">
+<div class="flex items-baseline justify-between mb-space-xs">
+<h1 class="font-display-mobile text-display-mobile text-on-surface tracking-tight">My Care Journey</h1>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Week 4 Postpartum</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+      A continuous tactile record of recovery rituals, specialist visits, and maternal milestones.
+    </p>
+<!-- Refined Editorial Filter Chips -->
+<div class="flex items-center gap-space-md overflow-x-auto pt-space-md pb-space-sm scrollbar-none no-scrollbar" id="nl-filters">
+<button class="relative py-1 font-title-md text-title-md text-primary shrink-0 transition-colors focus:outline-none" data-nl-filter="all" type="button">
+        All
+        <span class="absolute bottom-0 inset-x-0 h-0.5 bg-primary rounded-full"></span>
+</button>
+<button class="py-1 font-body-md text-body-md text-secondary shrink-0 hover:text-on-surface transition-colors focus:outline-none" data-nl-filter="mother" type="button">
+        Mother
+      </button>
+<button class="py-1 font-body-md text-body-md text-secondary shrink-0 hover:text-on-surface transition-colors focus:outline-none" data-nl-filter="baby" type="button">
+        Baby
+      </button>
+<button class="py-1 font-body-md text-body-md text-secondary shrink-0 hover:text-on-surface transition-colors focus:outline-none" data-nl-filter="appointments" type="button">
+        Appointments
+      </button>
+<button class="py-1 font-body-md text-body-md text-secondary shrink-0 hover:text-on-surface transition-colors focus:outline-none" data-nl-filter="referrals" type="button">
+        Referrals
+      </button>
+<button class="py-1 font-body-md text-body-md text-secondary shrink-0 hover:text-on-surface transition-colors focus:outline-none" data-nl-filter="tasks" type="button">
+        Tasks
+      </button>
+</div>
+</div>
+<!-- Care Team Ribbon (Tactile Paper Layer) -->
+<div class="mx-margin mt-space-sm mb-space-md p-space-md bg-surface-container-low rounded-xl">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-md text-label-md text-secondary uppercase tracking-wider">Circle of Care</span>
+<span class="font-label-sm text-label-sm text-primary">4 active guides</span>
+</div>
+<div class="flex items-center gap-space-md overflow-x-auto py-1">
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Warm portrait of Dr. Ananya Rao, a compassionate Indian female obstetrician wearing soft earth-toned medical attire with subtle warm sunlight in a serene studio setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn_dRFICosxXkhbpADL_V2_53-6ND3uVnLDNU2qmJAEzzWRHYgvBchXT1wFeHWlHgcCok1lNC7E86r-vso1kajAcYl8iINGOggmovpRtG5vYhKnS2Y17p2OrQthjMx3HVb5ZgWcy96Zlttes5FGcnuepGXjyig058eDWiYdBnnPMFrXmLOZwFWnDmeG8DfTaAe-7aSmCteYGykUyYTeaj5CGaIEK2nTaw7KpuIbuE0KUqTlFNLxjjrqg"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Dr. A. Rao</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">OB/GYN</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Gentle portrait of Meera Nair, an experienced postpartum ayurvedic practitioner with calm demeanor in minimalist linen clothing, warm ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2m21OGbue5tyANpiPEGy3x0379m_3h2kl8LzvVdztaE968ed-b71aUQLTXQQQ9YVgYN_TBghbw-wHs29aABwKd94tCElprf-EmLLBnl0TL8TNFR1NSPKjP61cle4JHQcoQne1Xo5VbLHDQ0WkomtM8l2011dxtdkRBTD4JIG8ZnYPnVjvyolQMeCGv12ambG0RUVj2NKhVihH5vxVAPNr8wYpgUAdzNgsR_iltBjarHw5mTf9V24vCQ"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Meera N.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Vaidya &amp; Doula</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="relative">
+<img class="w-10 h-10 rounded-full object-cover shadow-sm" data-alt="Portrait of pediatric feeding consultant Sunita Patel smiling warmly against natural terracotta and off-white background, editorial organic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTE9gB21kNg627Bynijpfn-8xzBrurjahseIo9YYUILKWQnj7VvqbxE1KxqoyMAMwzOmQywpxj8FeXij5pr-_MqqivtxmJkbvCw997FwzBwhNHeQ1RgM8mcNO6VZ6FlQZ3fsaoLs95uwZhpeX-AMmHSHT2rxejDhTTZBFGzliRIMfKiEPCYsJ8gkCWI1_yicKEYs19ZONlnRXmOIfS29s_FxYbOT4-VeWIQ2n5XxtNdOTUea3Zj-qCJg"/>
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-secondary rounded-full ring-2 ring-surface-container-low"></span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Sunita P.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Lactation Doula</span>
+</div>
+</div>
+<a class="shrink-0 flex items-center gap-1.5 px-3 py-2 rounded-full bg-surface-container-lowest text-primary font-label-sm text-label-sm shadow-sm hover:opacity-90 transition-opacity" data-nl-sheet="invite" href="#">
+<span class="material-symbols-outlined text-[16px]">person_add</span>
+<span>Invite</span>
+</a>
+</div>
+</div>
+<!-- Editorial Timeline Section -->
+<div class="relative px-margin mt-space-sm pb-space-xl" data-nl-timeline>
+<!-- Asymmetric Connecting Thread Spine -->
+<div class="absolute left-[78px] top-6 bottom-4 w-px bg-surface-container-highest"></div>
+<!-- Node 1: 15 OCT (Completed Follow-up) -->
+<div class="relative flex items-start gap-space-md mb-space-lg group" data-cat="appointments mother" data-nl-card>
+<!-- Date Column -->
+<div class="w-14 shrink-0 text-right pt-1">
+<span class="font-headline-md text-headline-md text-on-surface block leading-tight">15</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">OCT</span>
+</div>
+<!-- Node Marker -->
+<div class="relative z-10 flex items-center justify-center w-6 h-6 shrink-0 mt-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+</div>
+<!-- Card Sheet -->
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-title-md text-title-md text-on-surface">Postpartum Follow-up</span>
+<span class="font-label-sm text-label-sm text-secondary bg-secondary-container/60 px-2 py-0.5 rounded-full" data-nl-status>
+            ✓ Care plan reviewed
+          </span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-space-sm">City Maternity Hospital · In-clinic</p>
+<!-- Recessed Clinical Quote Note -->
+<div class="p-space-sm bg-surface-container rounded-lg mb-space-sm">
+<p class="font-body-sm text-body-sm text-on-surface-variant italic" data-nl-skip>
+            “Pelvic rest &amp; gentle breathing exercises recorded by Dr. Rao. Incision site healing symmetrically with zero swelling.”
+          </p>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center gap-space-xs text-secondary">
+<span class="material-symbols-outlined text-base">description</span>
+<span class="font-label-sm text-label-sm">Discharge Summary &amp; Vitals</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" type="button"
+  data-nl-detail="visit"
+  data-detail-eyebrow="Visit record"
+  data-detail-title="Postpartum follow-up · 15 October"
+  data-detail-sub="City Maternity Hospital · Dr. Ananya Rao"
+  data-detail-body="Reviewed discharge plan, checked incision healing, discussed sleep and energy levels. Recorded pelvic rest and gentle breathing exercises. Attached: discharge summary and vitals log."
+  data-detail-primary="Ask about this visit"
+  data-detail-done="Question sent to the care team">
+            View notes →
+          </button>
+</div>
+</div>
+</div>
+<!-- Node 2: 17 OCT (Referral Pending) -->
+<div class="relative flex items-start gap-space-md mb-space-lg group" data-cat="referrals mother appointments" data-nl-card>
+<!-- Date Column -->
+<div class="w-14 shrink-0 text-right pt-1">
+<span class="font-headline-md text-headline-md text-on-surface block leading-tight">17</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">OCT</span>
+</div>
+<!-- Node Marker -->
+<div class="relative z-10 flex items-center justify-center w-6 h-6 shrink-0 mt-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary-container"></span>
+</div>
+<!-- Card Sheet -->
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-title-md text-title-md text-on-surface">Specialist Referral</span>
+<span class="font-label-sm text-label-sm text-tertiary bg-tertiary-fixed/40 px-2 py-0.5 rounded-full" data-nl-status>
+            ○ Pending confirmation
+          </span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-space-sm">Women’s Health Centre · Pelvic Physiotherapy</p>
+<div class="p-space-sm bg-surface-container-low rounded-lg mb-space-sm flex items-start gap-space-xs">
+<span class="material-symbols-outlined text-tertiary text-lg shrink-0 mt-0.5">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Appointment confirmation still needed from intake coordinator. Morning slot (09:30 AM) reserved provisionally.
+          </p>
+</div>
+<div class="flex items-center gap-space-sm pt-1">
+<button class="px-space-md py-1.5 bg-primary text-on-primary font-label-md text-label-md rounded-lg shadow-sm hover:opacity-95 transition-opacity" type="button"
+  data-nl-detail="referral"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="Confirm your physiotherapy slot"
+  data-detail-sub="Women’s Health Centre · 18 Oct, 09:30 AM"
+  data-detail-body="A morning slot is provisionally reserved. Confirming here tells the intake coordinator to hold it and shares your referral summary with the physiotherapy team."
+  data-detail-primary="Confirm slot"
+  data-detail-done="Slot confirmed ✓">
+            Confirm slot
+          </button>
+<button class="px-space-md py-1.5 bg-surface-container text-on-surface font-label-md text-label-md rounded-lg hover:bg-surface-container-high transition-colors" type="button"
+  data-nl-detail="reschedule"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="Ask for another time"
+  data-detail-sub="Pelvic physiotherapy · Women’s Health Centre"
+  data-detail-body="Tell the coordinator which days suit you and NurtureLoop passes it to the clinic. Nothing is cancelled until a new slot is agreed."
+  data-detail-primary="Send preference"
+  data-detail-done="Preference sent to the clinic">
+            Reschedule
+          </button>
+</div>
+</div>
+</div>
+<!-- Node: 18 OCT (Baby weight check) -->
+<div class="relative flex items-start gap-space-md mb-space-lg group" data-cat="baby appointments" data-nl-card>
+<!-- Date Column -->
+<div class="w-14 shrink-0 text-right pt-1">
+<span class="font-headline-md text-headline-md text-on-surface block leading-tight">18</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">OCT</span>
+</div>
+<!-- Node Marker -->
+<div class="relative z-10 flex items-center justify-center w-6 h-6 shrink-0 mt-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary-fixed-dim"></span>
+</div>
+<!-- Card Sheet -->
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-title-md text-title-md text-on-surface">Baby weight check</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded-full" data-nl-status>
+            ○ Scheduled
+          </span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-space-sm">Paediatric desk · City Maternity Hospital</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-sm">
+          Feeding rhythm is steady. The paediatric team records weight gain and answers any feeding questions you bring.
+        </p>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" type="button"
+  data-nl-detail="babyvisit"
+  data-detail-eyebrow="Mother + Baby"
+  data-detail-title="Baby weight check · 18 October"
+  data-detail-sub="Paediatric desk · City Maternity Hospital"
+  data-detail-body="Bring the baby health booklet. The paediatric team will record weight, growth and feeding rhythm, and can review any feeding questions from the last two weeks."
+  data-detail-primary="Add a feeding question"
+  data-detail-done="Feeding question added">
+            Prepare for this visit →
+          </button>
+</div>
+</div>
+<!-- Node 3: 20 OCT (Awaiting Care Team Response) -->
+<div class="relative flex items-start gap-space-md mb-space-lg group" data-cat="tasks mother" data-nl-card>
+<!-- Date Column -->
+<div class="w-14 shrink-0 text-right pt-1">
+<span class="font-headline-md text-headline-md text-on-surface block leading-tight">20</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">OCT</span>
+</div>
+<!-- Node Marker -->
+<div class="relative z-10 flex items-center justify-center w-6 h-6 shrink-0 mt-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-primary-container"></span>
+</div>
+<!-- Card Sheet -->
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-title-md text-title-md text-on-surface">Care Team Query</span>
+<span class="font-label-sm text-label-sm text-primary bg-primary-fixed/50 px-2 py-0.5 rounded-full" data-nl-status>
+            ○ Awaiting response
+          </span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-space-sm">Sunita Patel, IBCLC · Feeding Rhythm</p>
+<div class="p-space-sm bg-surface-container rounded-lg mb-space-sm">
+<div class="flex items-center gap-1.5 mb-1">
+<span class="material-symbols-outlined text-sm text-primary">chat</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Your question sent at 10:14 AM:</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            “Infant latch feels shallow on left side after evening feeds. Is warming compress recommended prior to nursing?”
+          </p>
+</div>
+<div class="flex items-center justify-between text-secondary">
+<span class="font-label-sm text-label-sm">Typical reply within 2 hours</span>
+<a class="font-label-sm text-label-sm text-primary font-semibold hover:underline flex items-center gap-0.5" href="more.html#messages">
+            Open thread
+            <span class="material-symbols-outlined text-xs">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Node 4: 28 OCT (Upcoming Milestone Assessment) -->
+<div class="relative flex items-start gap-space-md group" data-cat="appointments mother" data-nl-card>
+<!-- Date Column -->
+<div class="w-14 shrink-0 text-right pt-1">
+<span class="font-headline-md text-headline-md text-on-surface-variant block leading-tight">28</span>
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block">OCT</span>
+</div>
+<!-- Node Marker -->
+<div class="relative z-10 flex items-center justify-center w-6 h-6 shrink-0 mt-1.5 rounded-full bg-surface-container-lowest shadow-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-outline-variant"></span>
+</div>
+<!-- Card Sheet -->
+<div class="flex-1 bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex items-center justify-between gap-space-xs mb-1">
+<span class="font-title-md text-title-md text-on-surface">6-Week Assessment</span>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded-full" data-nl-status>
+            ○ Scheduled
+          </span>
+</div>
+<p class="font-label-md text-label-md text-secondary mb-space-sm">Comprehensive Postpartum &amp; Wellbeing Check</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-md">
+          Key physiological recovery clearance, emotional mental wellness screening (EPDS), and gentle return-to-activity roadmapping with Dr. Rao.
+        </p>
+<!-- Preparation Checklist Preview -->
+<div class="p-space-sm bg-surface-container-low rounded-lg space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Pre-visit Self Reflection</span>
+<span class="font-label-sm text-label-sm text-tertiary">1 of 3 ready</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full w-1/3"></div>
+</div>
+</div>
+<button class="mt-3 font-label-sm text-label-sm text-primary font-semibold hover:underline" type="button"
+  data-nl-detail="assessment"
+  data-detail-eyebrow="Coming up"
+  data-detail-title="6-Week Assessment · 28 October"
+  data-detail-sub="Dr. Ananya Rao · City Maternity Hospital"
+  data-detail-body="A full recovery and wellbeing review: physical healing, emotional wellness screening, and a gentle return-to-activity plan. The self-reflection questions are saved in your care plan."
+  data-detail-primary="Open care plan"
+  data-detail-done="Opening your care plan">
+            Open preparation →
+          </button>
+</div>
+</div>
+<!-- Empty state for filters -->
+<div class="hidden text-center py-space-xl" data-nl-empty>
+<span class="material-symbols-outlined text-4xl text-outline-variant">filter_alt_off</span>
+<p class="font-body-md text-body-md text-secondary mt-space-sm">Nothing here yet for this filter.</p>
+</div>
+</div>
+<!-- Maternal Note Footer Callout -->
+<div class="mx-margin mb-space-lg p-space-md bg-secondary-container/40 rounded-xl flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest flex items-center justify-center text-secondary shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-xl">spa</span>
+</div>
+<div class="flex-1 min-w-0">
+<p class="font-label-md text-label-md text-on-secondary-container font-semibold">Gentle Reminder</p>
+<p class="font-body-sm text-body-sm text-secondary">Honoring the sacred 40-day recovery window.</p>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-medium hover:underline shrink-0" data-nl-sheet="guide" type="button">
+      Read Guide
+    </button>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(37,35,33,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-gutter"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="home" href="app.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">spa</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 transition-colors duration-200 group text-primary font-semibold" data-path="journey" href="journey.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">auto_stories</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Journey</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="care" href="care-plan.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">healing</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Care</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="messages" href="more.html#messages"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">chat_bubble_outline</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Messages</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="more" href="more.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">more_horiz</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">More</span></a></div></nav><script src="assets/i18n.js?v=4"></script><script src="assets/nurtureloop.js?v=4"></script></body></html>

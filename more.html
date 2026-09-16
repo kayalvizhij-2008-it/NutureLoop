@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>NurtureLoop</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#ffffff", "surface-container-highest": "#e7e1de", "inverse-surface": "#32302e", "surface-variant": "#e7e1de", "on-primary-fixed": "#3a0b00", "surface-bright": "#fef8f4", "secondary-fixed": "#d8e7d5", "on-tertiary-fixed": "#2a1800", "tertiary-fixed-dim": "#fdba5e", "surface-container-lowest": "#ffffff", "secondary-container": "#d8e7d5", "on-primary-fixed-variant": "#783119", "secondary-fixed-dim": "#bccab9", "on-tertiary-container": "#fffbff", "surface-container-low": "#f8f2ef", "outline-variant": "#dac1ba", "primary": "#93452b", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#643f00", "secondary": "#556254", "tertiary-container": "#a06911", "inverse-on-surface": "#f6f0ec", "on-error-container": "#93000a", "background": "#fef8f4", "primary-container": "#b25d41", "on-secondary": "#ffffff", "tertiary": "#815200", "error-container": "#ffdad6", "primary-fixed": "#ffdbd0", "on-secondary-fixed": "#131e13", "on-surface": "#1d1b19", "surface-dim": "#ded9d5", "inverse-primary": "#ffb59e", "surface-container": "#f3ede9", "on-secondary-fixed-variant": "#3d4a3d", "error": "#ba1a1a", "on-secondary-container": "#5b685a", "on-tertiary": "#ffffff", "on-surface-variant": "#55433d", "on-background": "#1d1b19", "surface-tint": "#96472d", "surface-container-high": "#ede7e3", "outline": "#88726c", "surface": "#fef8f4", "on-primary-container": "#fffbff", "primary-fixed-dim": "#ffb59e", "tertiary-fixed": "#ffddb6" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "margin": "1.25rem", "space-lg": "1.5rem", "gutter-tablet": "1.5rem", "gutter": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Playfair Display"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Playfair Display"], "display-mobile": ["Playfair Display"], "headline-lg": ["Playfair Display"], "title-md": ["Plus Jakarta Sans"], "display": ["Playfair Display"], "title-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}.nl-tab.is-active{background:#fef8f4;color:#93452b;box-shadow:0 1px 2px rgba(37,35,33,.06)}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(37,35,33,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="NurtureLoop Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCno_s-vOFSyrMMxN11YKZph0XR8-FqxPqsZ8RwGbJV0EpdGJohFDWHoXF6HnJP3XD4vnJ_F_yj69URQgZa6xgiWmRADF1u5GDFIXJWypHwOSLw_XLjlkJ6NOtr4B_JLSnb5mr0f_wjHj5LHO0i0m5BjPnQ57f3hzigbXoVVAMzAXiNGwvTMh4rTUc_Z4EYU-qYb_TtXde1gSpGHxW4RCgRmBo-bHhc2mhhgBDzqSXzfFqe42CP15Q3gg"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary tracking-tight leading-none">NurtureLoop</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">More</span></div></div><div class="flex items-center"><a class="relative p-0.5 rounded-full ring-1 ring-outline-variant/60 hover:ring-primary transition-all duration-300" data-path="more" href="more.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxrKa9DDKRY5mTc49wXyf90wFZKwpTISu6DrkNn02oSPvo7x9XHlE3-yAk2dGkoR-Qn8JbVTKq6p1oHGk4O86fXTCoDKVvlcTUSasyteS4OekG1meI1adCHv3ZroyNC7Nga3M9u9xA0R3hqVhwsqnrRbXvozn4ZS8sJMtKUHb53lVf2_HOWwsKnWKz8lc7_jYLM7_ubf3gy-XrJr0qTTpQPx_z3_ySD-aUYH3e-QRA7HfDawGpUo7u-Q"/></a></div></div></header><main class="flex-1 w-full pt-16 bg-surface pb-24"><div class="flex flex-col w-full">
+<div class="hidden" data-nl-offline-panel></div>
+<div class="px-margin pt-4 pb-4">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface tracking-tight">More</h1>
+<p class="font-body-md text-body-md text-secondary mt-0.5">Messages, care circle, family journey, privacy and settings — all in one quiet place.</p>
+</div>
+<!-- Quick jump -->
+<div class="px-margin mb-space-md grid grid-cols-2 gap-2.5">
+<a class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2 hover:bg-surface-container transition-colors" href="journey.html">
+<span class="material-symbols-outlined text-primary">auto_stories</span>
+<span class="font-title-md text-title-md text-on-surface">My Care Journey</span>
+<span class="font-label-sm text-label-sm text-secondary">Timeline, visits, referrals</span>
+</a>
+<a class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2 hover:bg-surface-container transition-colors" href="care-plan.html">
+<span class="material-symbols-outlined text-primary">healing</span>
+<span class="font-title-md text-title-md text-on-surface">Care Plan</span>
+<span class="font-label-sm text-label-sm text-secondary">Plain-language instructions</span>
+</a>
+<a class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2 hover:bg-surface-container transition-colors" href="carebridge.html">
+<span class="material-symbols-outlined text-primary">sync_alt</span>
+<span class="font-title-md text-title-md text-on-surface">CareBridge</span>
+<span class="font-label-sm text-label-sm text-secondary">Referral continuity</span>
+</a>
+<button class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-2 text-left hover:bg-surface-container transition-colors" data-nl-sheet="voice" type="button">
+<span class="material-symbols-outlined text-primary">graphic_eq</span>
+<span class="font-title-md text-title-md text-on-surface" data-nl-skip>SakhiVoice</span>
+<span class="font-label-sm text-label-sm text-secondary">Ask in your language</span>
+</button>
+</div>
+<!-- Messages -->
+<section class="px-margin mt-space-lg scroll-mt-20" id="messages">
+<div class="flex items-baseline justify-between mb-space-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Messages</h2>
+<button class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1" data-nl-sheet="ask" type="button">
+<span class="material-symbols-outlined text-sm">edit_square</span>
+<span>Ask my care team</span>
+</button>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-sm flex flex-col">
+<div class="bg-surface-bright rounded-lg p-space-md max-h-80 overflow-y-auto" data-nl-thread>
+<div class="flex justify-start mb-2.5">
+<div class="max-w-[85%] bg-surface-container rounded-xl p-3">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Dr. Ananya Rao · 14 Oct</p>
+<p class="font-body-sm text-body-sm text-on-surface">Your discharge plan is on record and your follow-up is booked for 15 October. Message here any time — I usually reply within two hours.</p>
+</div>
+</div>
+<div class="flex justify-end mb-2.5">
+<div class="max-w-[85%] bg-primary text-on-primary rounded-xl p-3">
+<p class="font-body-sm text-body-sm">Infant latch feels shallow on left side after evening feeds. Is warming compress recommended prior to nursing?</p>
+</div>
+</div>
+<div class="flex justify-start">
+<div class="max-w-[85%] bg-surface-container rounded-xl p-3">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider mb-1">Sunita Patel, IBCLC · 20 Oct</p>
+<p class="font-body-sm text-body-sm text-on-surface">Thank you for writing this down. A warm compress before feeds can help flow, and we can look at positioning together at the 6-week visit. Nothing here needs urgent attention.</p>
+</div>
+</div>
+</div>
+<form class="mt-2.5 flex items-center gap-2" data-nl-composer>
+<input class="flex-1 h-11 rounded-lg bg-surface-bright px-3 font-body-sm text-body-sm text-on-surface border border-outline-variant/40 focus:outline-none focus:border-primary" placeholder="Write to your care team…" type="text"/>
+<button class="h-11 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md flex items-center gap-1.5 hover:opacity-95 transition-opacity shrink-0" type="submit">
+<span class="material-symbols-outlined text-[18px]">send</span>
+<span>Send</span>
+</button>
+</form>
+<div class="mt-2.5 flex items-center gap-1.5 text-secondary">
+<span class="material-symbols-outlined text-sm">lock</span>
+<span class="font-label-sm text-label-sm">Messages stay with your care team. NurtureLoop never answers clinical questions on its own.</span>
+</div>
+</div>
+</section>
+<!-- Care Circle -->
+<section class="px-margin mt-space-xl scroll-mt-20" id="circle">
+<div class="flex items-baseline justify-between mb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Care Circle</h2>
+<p class="font-label-md text-label-md text-secondary mt-0.5">Only you decide what each person can see.</p>
+</div>
+<button class="font-label-md text-label-md text-primary font-semibold flex items-center gap-1" data-nl-sheet="invite" type="button">
+<span class="material-symbols-outlined text-sm">person_add</span>
+<span>Invite someone</span>
+</button>
+</div>
+<div class="space-y-2.5" data-nl-caregivers>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-semibold shrink-0"><span class="font-headline-md text-headline-md">P</span></div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-title-md text-title-md text-on-surface">Pooja (Sister)</h3>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed px-2 py-0.5 rounded-full">Active helper</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Transport, clinic escort, appointment reminders</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-sage/20 text-secondary">✓ Appointments</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-sage/20 text-secondary">✓ Transport</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-secondary">✕ Private notes</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" data-nl-sheet="access" data-name="Pooja" data-role="Sister" type="button">Manage access</button>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary" data-nl-toast="Calling Pooja…" type="button">Call</button>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary" data-nl-go="more.html#messages" type="button">Message</button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-space-md flex flex-col gap-3 shadow-sm">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-semibold shrink-0"><span class="font-headline-md text-headline-md">R</span></div>
+<div class="min-w-0 flex-1">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-title-md text-title-md text-on-surface">Rahul (Husband)</h3>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded-full">Care partner</span>
+</div>
+<p class="font-body-sm text-body-sm text-secondary mt-0.5">Appointment support, baby watch, location during visits</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-1.5">
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-sage/20 text-secondary">✓ Appointments</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-sage/20 text-secondary">✓ Location</span>
+<span class="font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-surface-container text-secondary">✕ Private notes</span>
+</div>
+<div class="flex items-center gap-3">
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" data-nl-sheet="access" data-name="Rahul" data-role="Partner" type="button">Manage access</button>
+<button class="font-label-sm text-label-sm text-secondary hover:text-primary" data-nl-go="more.html#messages" type="button">Message</button>
+</div>
+</div>
+</div>
+<div class="mt-3 bg-surface-container rounded-xl p-3.5 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">shield_person</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Private medical notes and clinician records are never shared with caregivers unless you change that yourself.</p>
+</div>
+</section>
+<!-- Mother + Baby -->
+<section class="px-margin mt-space-xl scroll-mt-20" id="family">
+<div class="mb-space-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight">Mother + Baby</h2>
+<p class="font-label-md text-label-md text-secondary mt-0.5">One connected family journey — recovery and the first weeks together.</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-1.5 flex gap-1 shadow-xs mb-3">
+<button class="nl-tab flex-1 py-2 rounded-lg font-title-md text-body-sm text-secondary transition-all is-active" data-nl-tab="mother" type="button">Mother</button>
+<button class="nl-tab flex-1 py-2 rounded-lg font-title-md text-body-sm text-secondary transition-all" data-nl-tab="baby" type="button">Baby</button>
+<button class="nl-tab flex-1 py-2 rounded-lg font-title-md text-body-sm text-secondary transition-all" data-nl-tab="family" type="button">Family</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" data-nl-panel="mother">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-3">Your recovery</p>
+<div class="space-y-3">
+<a class="flex items-center gap-3 hover:text-primary transition-colors" href="care-plan.html"><span class="material-symbols-outlined text-primary text-[20px]">healing</span><span class="font-body-md text-body-md">Care plan · plain-language instructions</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors" href="journey.html"><span class="material-symbols-outlined text-primary text-[20px]">event_available</span><span class="font-body-md text-body-md">15 Oct · Postpartum follow-up</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></a>
+<a class="flex items-center gap-3 hover:text-primary transition-colors" href="journey.html"><span class="material-symbols-outlined text-primary text-[20px]">follow_the_signs</span><span class="font-body-md text-body-md">Follow-ups · 6-week assessment on 28 Oct</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></a>
+<button class="flex items-center gap-3 w-full text-left hover:text-primary transition-colors" data-nl-sheet="ask" type="button"><span class="material-symbols-outlined text-primary text-[20px]">forum</span><span class="font-body-md text-body-md">Questions · ask your care team</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></button>
+</div>
+</div>
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" data-nl-panel="baby">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-3">Baby’s journey</p>
+<div class="space-y-3">
+<a class="flex items-center gap-3 hover:text-primary transition-colors" href="journey.html"><span class="material-symbols-outlined text-primary text-[20px]">child_care</span><span class="font-body-md text-body-md">18 Oct · Weight check at the paediatric desk</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></a>
+<div class="flex items-center gap-3"><span class="material-symbols-outlined text-primary text-[20px]">verified</span><span class="font-body-md text-body-md">Approved follow-ups · feeding review at 6 weeks</span></div>
+<button class="flex items-center gap-3 w-full text-left hover:text-primary transition-colors" data-nl-sheet="guide" type="button"><span class="material-symbols-outlined text-primary text-[20px]">description</span><span class="font-body-md text-body-md">Documents · baby health booklet, vaccine card</span><span class="ml-auto material-symbols-outlined text-secondary text-[18px]">chevron_right</span></button>
+</div>
+</div>
+<div class="hidden bg-surface-container-lowest rounded-xl p-space-lg shadow-sm" data-nl-panel="family">
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-3">Together</p>
+<div class="relative pl-6">
+<div class="absolute left-[7px] top-2 bottom-2 w-px bg-outline-variant/50"></div>
+<div class="space-y-4">
+<div class="relative"><span class="absolute -left-6 top-1.5 w-3 h-3 rounded-full bg-primary"></span><p class="font-title-md text-title-md text-on-surface">15 Oct · Joint follow-up</p><p class="font-body-sm text-body-sm text-secondary">City Maternity Hospital · Suite 3B · 10:30 AM</p></div>
+<div class="relative"><span class="absolute -left-6 top-1.5 w-3 h-3 rounded-full bg-secondary"></span><p class="font-title-md text-title-md text-on-surface">18 Oct · Baby weight check</p><p class="font-body-sm text-body-sm text-secondary">Paediatric desk · morning</p></div>
+<div class="relative"><span class="absolute -left-6 top-1.5 w-3 h-3 rounded-full bg-tertiary-container"></span><p class="font-title-md text-title-md text-on-surface">28 Oct · 6-week assessment</p><p class="font-body-sm text-body-sm text-secondary">Recovery clearance and wellbeing review</p></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy & consent -->
+<section class="px-margin mt-space-xl scroll-mt-20" id="privacy">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight mb-space-sm">Privacy &amp; consent</h2>
+<div class="bg-surface-container-low rounded-xl p-4">
+<div class="nl-row flex items-center justify-between gap-3 py-3 border-b border-outline-variant/30">
+<div><p class="font-title-md text-body-md text-on-surface">Share my journey with my care team</p><p class="font-label-sm text-label-sm text-secondary mt-0.5">Clinicians you are actively seeing</p></div>
+<button class="nl-toggle" data-nl-consent="shareTeam" aria-pressed="true" aria-label="Share with care team" type="button"></button>
+</div>
+<div class="nl-row flex items-center justify-between gap-3 py-3 border-b border-outline-variant/30">
+<div><p class="font-title-md text-body-md text-on-surface">Store my journey on this device</p><p class="font-label-sm text-label-sm text-secondary mt-0.5">Keeps care readable when the signal drops</p></div>
+<button class="nl-toggle" data-nl-consent="offlineStorage" aria-pressed="true" aria-label="Offline storage" type="button"></button>
+</div>
+<div class="nl-row flex items-center justify-between gap-3 py-3 border-b border-outline-variant/30">
+<div><p class="font-title-md text-body-md text-on-surface">Allow caregiver access</p><p class="font-label-sm text-label-sm text-secondary mt-0.5">Each person still needs their own permissions</p></div>
+<button class="nl-toggle" data-nl-consent="caregiverAccess" aria-pressed="true" aria-label="Caregiver access" type="button"></button>
+</div>
+<div class="nl-row flex items-center justify-between gap-3 py-3">
+<div><p class="font-title-md text-body-md text-on-surface">Share an anonymous summary for research</p><p class="font-label-sm text-label-sm text-secondary mt-0.5">Never includes your name or records</p></div>
+<button class="nl-toggle" data-nl-consent="research" aria-pressed="false" aria-label="Research summary" type="button"></button>
+</div>
+</div>
+<div class="mt-3 bg-surface-container rounded-xl p-3.5 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Your choices are saved on this device only. You can revoke caregiver access at any time and keep reading your own journey.</p>
+</div>
+</section>
+<!-- Settings -->
+<section class="px-margin mt-space-xl mb-space-lg scroll-mt-20" id="settings">
+<h2 class="font-headline-md text-headline-md text-on-surface tracking-tight mb-space-sm">Settings</h2>
+<div class="bg-surface-container-low rounded-xl p-4 flex flex-col gap-4">
+<div>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-secondary mb-2">Language</p>
+<div class="flex items-center gap-1.5" id="language-switcher">
+<button class="lang-pill px-3 py-1 rounded-lg font-label-md text-label-md transition-all" data-lang-btn="en" type="button">English</button>
+<button class="lang-pill px-3 py-1 rounded-lg font-label-md text-label-md transition-all" data-lang-btn="ta" type="button">தமிழ்</button>
+<button class="lang-pill px-3 py-1 rounded-lg font-label-md text-label-md transition-all" data-lang-btn="hi" type="button">हिन्दी</button>
+</div>
+<p class="font-label-sm text-label-sm text-secondary mt-2">The whole interface changes — headings, buttons, statuses and messages.</p>
+</div>
+<div class="flex items-center justify-between gap-3 pt-3 border-t border-outline-variant/30">
+<div><p class="font-title-md text-body-md text-on-surface">Reduced motion</p><p class="font-label-sm text-label-sm text-secondary mt-0.5">Calms animations and transitions</p></div>
+<button class="nl-toggle" data-nl-setting="reducedMotion" aria-pressed="false" aria-label="Reduced motion" type="button"></button>
+</div>
+<div class="pt-3 border-t border-outline-variant/30">
+<div class="flex items-center justify-between gap-3">
+<div>
+<p class="font-title-md text-body-md text-on-surface flex items-center gap-2">Connection <span class="nl-chip" data-nl-net-badge>Online</span></p>
+<p class="font-label-sm text-label-sm text-secondary mt-0.5">JananiConnect demo · saved journey stays readable offline</p>
+</div>
+<button class="px-3 py-2 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors shrink-0" data-nl-offline-toggle type="button">Toggle offline</button>
+</div>
+<div class="mt-3">
+<div class="flex items-center justify-between text-label-sm font-label-sm mb-1.5">
+<span class="text-secondary">Sync status</span>
+<span class="text-primary font-semibold" data-nl-sync-label>100%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full transition-all duration-300" style="width:100%" data-nl-sync-bar></div>
+</div>
+</div>
+</div>
+<div class="pt-3 border-t border-outline-variant/30 flex items-center gap-3">
+<div class="w-11 h-11 rounded-full bg-surface-container flex items-center justify-center text-secondary shrink-0"><span class="material-symbols-outlined">person</span></div>
+<div class="min-w-0">
+<p class="font-title-md text-body-md text-on-surface">Meena · Day 14</p>
+<p class="font-label-sm text-label-sm text-secondary">Gentle Awakening Stage · Care Circle of 4</p>
+</div>
+</div>
+</div>
+</section>
+<div class="px-margin pb-space-md">
+<div class="flex items-center gap-3 p-space-md rounded-xl bg-surface-container-high/60 text-secondary">
+<span class="material-symbols-outlined text-tertiary-container text-xl shrink-0">self_improvement</span>
+<p class="font-body-sm text-body-sm italic text-on-surface-variant">NurtureLoop is assistive, not diagnostic. It never diagnoses, recommends treatment or replaces your care team.</p>
+</div>
+<a class="mt-3 flex items-center justify-center gap-2 h-11 rounded-xl bg-surface-container text-on-surface font-title-md text-body-md hover:bg-surface-container-high transition-colors" href="index.html">
+<span class="material-symbols-outlined text-[18px]">arrow_back</span>
+<span>Return to landing page</span>
+</a>
+</div>
+</div></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(37,35,33,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-gutter"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="home" href="app.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">spa</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Home</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="journey" href="journey.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">auto_stories</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Journey</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="care" href="care-plan.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">healing</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Care</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="messages" href="more.html#messages"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">chat_bubble_outline</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Messages</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 transition-colors duration-200 group text-primary font-semibold" data-path="more" href="more.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">more_horiz</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">More</span></a></div></nav><script src="assets/i18n.js?v=4"></script><script src="assets/nurtureloop.js?v=4"></script></body></html>

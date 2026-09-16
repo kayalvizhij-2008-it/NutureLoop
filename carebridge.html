@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>NurtureLoop</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#ffffff", "surface-container-highest": "#e7e1de", "inverse-surface": "#32302e", "surface-variant": "#e7e1de", "on-primary-fixed": "#3a0b00", "surface-bright": "#fef8f4", "secondary-fixed": "#d8e7d5", "on-tertiary-fixed": "#2a1800", "tertiary-fixed-dim": "#fdba5e", "surface-container-lowest": "#ffffff", "secondary-container": "#d8e7d5", "on-primary-fixed-variant": "#783119", "secondary-fixed-dim": "#bccab9", "on-tertiary-container": "#fffbff", "surface-container-low": "#f8f2ef", "outline-variant": "#dac1ba", "primary": "#93452b", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#643f00", "secondary": "#556254", "tertiary-container": "#a06911", "inverse-on-surface": "#f6f0ec", "on-error-container": "#93000a", "background": "#fef8f4", "primary-container": "#b25d41", "on-secondary": "#ffffff", "tertiary": "#815200", "error-container": "#ffdad6", "primary-fixed": "#ffdbd0", "on-secondary-fixed": "#131e13", "on-surface": "#1d1b19", "surface-dim": "#ded9d5", "inverse-primary": "#ffb59e", "surface-container": "#f3ede9", "on-secondary-fixed-variant": "#3d4a3d", "error": "#ba1a1a", "on-secondary-container": "#5b685a", "on-tertiary": "#ffffff", "on-surface-variant": "#55433d", "on-background": "#1d1b19", "surface-tint": "#96472d", "surface-container-high": "#ede7e3", "outline": "#88726c", "surface": "#fef8f4", "on-primary-container": "#fffbff", "primary-fixed-dim": "#ffb59e", "tertiary-fixed": "#ffddb6" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "margin": "1.25rem", "space-lg": "1.5rem", "gutter-tablet": "1.5rem", "gutter": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Playfair Display"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Playfair Display"], "display-mobile": ["Playfair Display"], "headline-lg": ["Playfair Display"], "title-md": ["Plus Jakarta Sans"], "display": ["Playfair Display"], "title-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(37,35,33,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="NurtureLoop Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfds1DMzo8rnmPCyP6Ejvgc_qwyHXhXh9CkpuhX9gIhO5smTegWMhsH_5IHGOd93LYMUwqAC23QknP0I_OHfDP4CNbtF2XsVhCy-gsoQ2Qq2XiaaW64XMy74X1nnnY8RpvJjt1HW_n3GGj_isAkDLLG7L6T0-0DTLRsoC6s9Xm0CWvtCHObt82wDHajBqWwJFm1UqM7r2VU9m98UhMuSm7TLH4LdsuEuG3g2Liolh15HGXOOZubbKoHw"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary tracking-tight leading-none">NurtureLoop</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">Journey</span></div></div><div class="flex items-center"><a class="relative p-0.5 rounded-full ring-1 ring-outline-variant/60 hover:ring-primary transition-all duration-300" data-path="more" href="more.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7YDUaOM9JfrseljKmo3dX7zotoCebfSF-1GlpPuIwOU2Sp3WuoQg1rHoMXPk7mRT1PhS5EuszknUndXfSTqXK3KGxMtjMYJnWTEIwRuGK38gaTMSDOlKW9plUJgXNOLHE0_nNW-_lD5trOKoS_r6HU2oNb539VEZ_fRwY_f0WWCsoVr6DgzZrX0z2MXStDkeUNlg94wNaxbNW8btkmNJlCFGIrXG5EVkSqvg6WkOh18qq5_9xA8Lx0g"/></a></div></div></header><main class="flex-1 w-full pt-16 bg-surface pb-24"><div class="flex flex-col w-full px-margin pb-10">
+<div class="hidden" data-nl-offline-panel></div>
+<!-- Editorial Header -->
+<div class="pt-4 pb-6 flex flex-col">
+<div class="flex items-center gap-2 mb-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-secondary">CareBridge Continuity</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Your referral journey</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Continuity between your community clinic and maternal hospital</p>
+</div>
+<!-- Referral Path Loop Card (Warm tactile paper container) -->
+<div class="relative bg-surface-container-low rounded-xl p-space-lg shadow-[0_4px_24px_rgba(37,35,33,0.03)] overflow-hidden mb-6">
+<!-- Subtle Botanical Watermark Impression -->
+<div class="absolute -right-6 -bottom-6 w-32 h-32 opacity-10 pointer-events-none text-primary">
+<svg fill="currentColor" viewbox="0 0 100 100">
+<path d="M50 5 C30 25 15 50 25 75 C35 100 65 95 75 75 C85 55 70 25 50 5 Z M50 20 C62 35 70 55 60 70 C50 85 35 75 35 60 C35 45 42 30 50 20 Z"></path>
+</svg>
+</div>
+<div class="relative flex items-start gap-4">
+<!-- Left Connecting Handcrafted Track SVG -->
+<div class="flex flex-col items-center pt-1 self-stretch w-6 flex-shrink-0">
+<!-- Origin Node (Deep Olive) -->
+<div class="w-5 h-5 rounded-full bg-secondary-container flex items-center justify-center">
+<div class="w-2.5 h-2.5 rounded-full bg-secondary"></div>
+</div>
+<!-- Connecting Loop Line -->
+<div class="flex-1 my-1 w-0.5 relative flex justify-center">
+<svg class="w-4 h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 16 80">
+<path class="text-primary/60" d="M8 0 C-4 25, 20 55, 8 80" fill="none" stroke="currentColor" stroke-dasharray="3 3" stroke-linecap="round" stroke-width="2"></path>
+</svg>
+</div>
+<!-- Destination Node (Terracotta active) -->
+<div class="w-5 h-5 rounded-full bg-primary-fixed flex items-center justify-center shadow-sm">
+<div class="w-2.5 h-2.5 rounded-full bg-primary"></div>
+</div>
+</div>
+<!-- Path Narrative Content -->
+<div class="flex-1 flex flex-col justify-between space-y-6">
+<!-- Origin Point -->
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Referred By</span>
+<p class="font-title-md text-title-md text-on-surface mt-0.5">Dr. Ananya Rao</p>
+<div class="flex items-center gap-1.5 mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">local_hospital</span>
+<span class="font-body-sm text-body-sm">Community Health Centre, Jayanagar</span>
+</div>
+</div>
+<!-- Destination Point -->
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-primary font-semibold">Going To</span>
+<p class="font-title-md text-title-md text-on-surface mt-0.5">City Maternity Hospital</p>
+<div class="flex items-center gap-1.5 mt-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">domain</span>
+<span class="font-body-sm text-body-sm">Specialized Maternal &amp; Neonatal Wing</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Accompanying Clinical Caregiver Note -->
+<div class="mt-5 pt-4 bg-surface-container/60 rounded-lg p-3 flex items-center gap-3">
+<img class="w-10 h-10 rounded-full object-cover flex-shrink-0" data-alt="Warm intimate candid portrait of an Indian female obstetrician doctor with a kind smile, gentle lighting, wearing subtle traditional attire with white coat, warm terracotta and sage undertones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN357QDXpswJXRD_-VLdY6oVf1MLoh_XwvC4FKsRxp89gH7_sOkw_3wNbJybAuZW9TyH_CCOW_0jaS3XNbkKR3ZIYxBAl32VGMRlZE3RJph6sdPQgv4ODwCy51rSUfuHv-1EzcpwY5xAlxLpaBoRWkKTo5_rxoNzCLQ0EcvRtpnBTEUWY-jDaKJ5SFI3Ak6HD6hmMTl5ziWhnVyVMD7hT5J82FZwiJ-9vsBbgkAJfWoyls34HmmtYXng"/>
+<div class="flex-1 min-w-0">
+<p class="font-label-sm text-label-sm text-secondary font-medium">Doctor's Clinical Note</p>
+<p class="font-body-sm text-body-sm text-on-surface" data-nl-skip>"Follow-up anomaly scan &amp; pelvic alignment consult recommended."</p>
+</div>
+</div>
+</div>
+<!-- Vertical Status Journey (5 Progressive Steps) -->
+<div class="bg-surface-container-lowest rounded-xl p-space-lg shadow-[0_2px_16px_rgba(37,35,33,0.04)] mb-6">
+<div class="flex items-center justify-between mb-5">
+<h2 class="font-title-lg text-title-lg text-on-surface">Timeline &amp; Approvals</h2>
+<span class="font-label-sm text-label-sm bg-secondary-fixed text-on-secondary-fixed px-2.5 py-1 rounded-full font-medium">Step 4 of 5</span>
+</div>
+<div class="relative flex flex-col space-y-5" data-nl-timeline>
+<!-- Step 1 (Completed) -->
+<div class="flex items-start gap-3.5 group" data-cat="referrals" role="button" tabindex="0"
+  data-nl-detail="step1"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="Referral created · 10 October"
+  data-detail-sub="Community Health Centre, Jayanagar"
+  data-detail-body="Dr. Ananya Rao created a formal digital referral file. Your care plan, discharge notes and blood panel were attached, and the referral reference is #REF-8821."
+  data-detail-primary="View attached records"
+  data-detail-done="Records opened">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-0.5 h-10 bg-secondary-fixed-dim absolute top-6"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Referral created</h3>
+<span class="font-label-sm text-label-sm text-secondary">10 Oct</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Formal digital health file generated by CHC Clinic</p>
+</div>
+</div>
+<!-- Step 2 (Completed) -->
+<div class="flex items-start gap-3.5 group" data-cat="referrals" role="button" tabindex="0"
+  data-nl-detail="step2"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="You were notified · 11 October"
+  data-detail-sub="SMS and NurtureLoop notification"
+  data-detail-body="Your care plan and the hospital instructions arrived on your phone in English, தமிழ் and हिन्दी. SakhiVoice can read the whole referral aloud if you prefer listening."
+  data-detail-primary="Listen to the referral"
+  data-detail-done="Reading your referral aloud">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-0.5 h-10 bg-secondary-fixed-dim absolute top-6"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Patient notified</h3>
+<span class="font-label-sm text-label-sm text-secondary">11 Oct</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Care plan &amp; hospital instructions received via SMS and app</p>
+</div>
+</div>
+<!-- Step 3 (Completed) -->
+<div class="flex items-start gap-3.5 group" data-cat="referrals appointments" role="button" tabindex="0"
+  data-nl-detail="step3"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="Appointment requested · 12 October"
+  data-detail-sub="Morning slot preference sent to hospital intake"
+  data-detail-body="Your preferred morning slot on 15 October was submitted to the maternal intake desk. You asked for transport support from Pooja, which is noted on the same request."
+  data-detail-primary="Change my preference"
+  data-detail-done="Preference updated">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-secondary text-on-secondary flex items-center justify-center z-10 shadow-sm">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<div class="w-0.5 h-12 bg-primary/30 absolute top-6"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Appointment requested</h3>
+<span class="font-label-sm text-label-sm text-secondary">12 Oct</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Slot preference for morning 15 Oct submitted to hospital intake</p>
+</div>
+</div>
+<!-- Step 4 (Current / Active Focus Step) -->
+<div class="flex items-start gap-3.5 bg-primary-fixed/25 -mx-3 px-3 py-2.5 rounded-lg transition-all duration-300" data-cat="referrals appointments" role="button" tabindex="0" data-nl-card
+  data-nl-detail="step4"
+  data-detail-eyebrow="CareBridge · In review"
+  data-detail-title="Hospital confirmation pending"
+  data-detail-sub="City Maternity Hospital · Maternal intake desk"
+  data-detail-body="Sister Lakshmi is reviewing your records at the intake desk. Confirming your availability here keeps the morning slot held and tells the desk you can attend."
+  data-detail-primary="Confirm availability"
+  data-detail-done="Availability confirmed ✓">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center z-10 shadow-[0_0_0_4px_rgba(147,69,43,0.15)] animate-pulse">
+<span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">hourglass_top</span>
+</div>
+<div class="w-0.5 h-10 bg-surface-container-highest absolute top-6"></div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-center justify-between flex-wrap gap-1">
+<h3 class="font-title-md text-title-md text-primary font-semibold">Hospital confirmation</h3>
+<span class="font-label-sm text-label-sm bg-primary text-on-primary px-2 py-0.5 rounded-full font-medium shadow-sm" data-nl-status>In Review</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Awaiting triage desk confirmation. Maternal coordinator Sister Lakshmi is reviewing records.</p>
+<div class="mt-2 flex items-center gap-1.5 text-primary text-label-sm font-medium">
+<span class="material-symbols-outlined text-[15px]">schedule</span>
+<span>Estimated turnaround: Within 24 hours</span>
+</div>
+</div>
+</div>
+<!-- Step 5 (Upcoming) -->
+<div class="flex items-start gap-3.5 opacity-60" data-cat="appointments" role="button" tabindex="0"
+  data-nl-detail="step5"
+  data-detail-eyebrow="Coming up"
+  data-detail-title="Visit completed · after 15 October"
+  data-detail-sub="Clinical consultation and prescription sync"
+  data-detail-body="After the visit, your digital summary updates automatically, prescriptions sync to your pharmacy, and the next follow-up appears in your care journey."
+  data-detail-primary="See what comes next"
+  data-detail-done="Opening your care journey">
+<div class="relative flex flex-col items-center">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center z-10">
+<span class="material-symbols-outlined text-[14px]">circle</span>
+</div>
+</div>
+<div class="flex-1 min-w-0 pt-0.5">
+<div class="flex items-baseline justify-between">
+<h3 class="font-title-md text-title-md text-on-surface">Visit completed</h3>
+<span class="font-label-sm text-label-sm text-secondary">Upcoming</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Clinical consultation, digital summary update, and prescription sync</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Compact Editorial Specification Section (Two-Column Sheet) -->
+<div class="bg-surface-container-low rounded-xl p-space-lg mb-6 shadow-[0_2px_12px_rgba(37,35,33,0.02)]">
+<div class="flex items-center gap-2 mb-4 pb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">assignment</span>
+<h2 class="font-title-lg text-title-lg text-on-surface">Referral Dossier</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6">
+<!-- Item: Appointment -->
+<div class="bg-surface-container-lowest p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Target Appointment</span>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface font-title-md text-title-md">
+<span class="material-symbols-outlined text-primary text-[18px]">event</span>
+<span>15 Oct, 10:30 AM</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5">(Requested slot)</span>
+</div>
+<!-- Item: Location -->
+<div class="bg-surface-container-lowest p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Hospital Department</span>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface font-title-md text-title-md">
+<span class="material-symbols-outlined text-primary text-[18px]">pin_drop</span>
+<span>Block B, 2nd Floor</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5">Maternity Reception, Room 204</span>
+</div>
+<!-- Item: Documents -->
+<div class="bg-surface-container-lowest p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Attached Records</span>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface font-title-md text-title-md">
+<span class="material-symbols-outlined text-primary text-[18px]">attach_file</span>
+<span>Ref #REF-8821</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5">Ultrasound scan report &amp; CBC log</span>
+</div>
+<!-- Item: Contact -->
+<div class="bg-surface-container-lowest p-3 rounded-lg flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Direct Coordinator</span>
+<div class="flex items-center gap-1.5 mt-1 text-on-surface font-title-md text-title-md">
+<span class="material-symbols-outlined text-primary text-[18px]">support_agent</span>
+<span>Sister Lakshmi</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary mt-0.5">+91 98450 22109 (Care desk)</span>
+</div>
+</div>
+<!-- Active Status Reassurance Banner -->
+<div class="mt-4 bg-secondary-fixed/40 rounded-lg p-3 flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-body-sm text-body-sm text-on-secondary-fixed font-medium">○ Status: Under clinical review by city intake team</span>
+</div>
+</div>
+<!-- Warm Visual Vignette / Hospital Welcome Card -->
+<div class="relative rounded-xl overflow-hidden mb-6 shadow-sm">
+<img class="w-full h-36 object-cover" data-alt="Serene sunlit hospital maternity waiting sanctuary in Bangalore with indoor plants, warm wood benches, soft terracotta accents and organic textile cushions, bathed in soothing morning light, tranquil and reassuring atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4TvtRnvAAc-g6nlql25nU367_NRvqv4rdxLnvBgqs2UqkmeCTOrT3Oovj9iNdYa2MjYSjo480O_lku4G6I2h7GJFYY03NgB9QMxySmSVw3ix1VCTUu_H1MaSzpPDrJ8q1_uAXbqu2l6kQ5r0lfHQXlmDBWqYOihq5Fl4sycAgapSW3kr930X8oO15nTJL4-UiGtKwdxeiTu0t4CqFzx-k4aw1AuMrSSrj4NW4g4cr03ImvGl-Fcf0AA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/85 via-inverse-surface/40 to-transparent flex flex-col justify-end p-4 text-on-primary">
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-tertiary-fixed font-medium">Peace of mind</span>
+<p class="font-title-md text-title-md leading-tight mt-0.5">Your records are pre-synced before you arrive</p>
+</div>
+</div>
+<!-- Next Step & Action Footer -->
+<div class="bg-surface-container rounded-xl p-space-lg flex flex-col shadow-sm">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb</span>
+<span class="font-title-md text-title-md text-on-surface">What's next?</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+      Once the hospital confirms your requested slot, you will receive a QR fast-track token for reception desk 204. No physical paperwork needed.
+    </p>
+<!-- Action Buttons -->
+<div class="flex flex-col sm:flex-row items-center gap-3">
+<button class="w-full sm:flex-1 h-12 bg-primary text-on-primary rounded-xl font-title-md text-title-md flex items-center justify-center gap-2 shadow-sm active:scale-[0.99] transition-transform duration-150 hover:bg-primary-container" id="confirm-intent-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">event_available</span>
+<span>Confirm availability</span>
+</button>
+<button class="w-full sm:w-auto px-5 h-12 bg-surface-container-lowest text-secondary rounded-xl font-title-md text-title-md flex items-center justify-center gap-1.5 shadow-sm active:scale-[0.99] transition-all hover:text-on-surface" id="view-details-btn" type="button"
+  data-nl-detail="dossier"
+  data-detail-eyebrow="CareBridge"
+  data-detail-title="Referral Dossier #REF-8821"
+  data-detail-sub="Community Health Centre → City Maternity Hospital"
+  data-detail-body="Referred by Dr. Ananya Rao. Destination: City Maternity Hospital, Block B, 2nd Floor, Room 204. Attached: ultrasound scan report and CBC log. Assigned coordinator: Sister Lakshmi. Status: priority intake under clinical review."
+  data-detail-primary="Send to my care team"
+  data-detail-done="Dossier shared with your care team">
+<span class="material-symbols-outlined text-[18px]">description</span>
+<span>View details</span>
+</button>
+</div>
+<!-- Delightful interactive micro-toast container -->
+<div class="hidden mt-3 p-3 bg-secondary-container text-on-secondary-container rounded-lg font-body-sm text-body-sm flex items-center gap-2 transition-opacity" id="status-toast">
+<span class="material-symbols-outlined text-[18px] text-secondary">check_circle</span>
+<span>Availability acknowledged. We will alert Sister Lakshmi immediately.</span>
+</div>
+</div>
+<script>
+  (function() {
+    const confirmBtn = document.getElementById('confirm-intent-btn');
+    const toast = document.getElementById('status-toast');
+    if (confirmBtn && toast) {
+      confirmBtn.addEventListener('click', function() {
+        confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[20px] animate-spin">sync</span><span>Syncing with Sister Lakshmi...</span>';
+        confirmBtn.disabled = true;
+        setTimeout(() => {
+          confirmBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">done</span><span>Availability Confirmed</span>';
+          confirmBtn.classList.remove('bg-primary');
+          confirmBtn.classList.add('bg-secondary');
+          toast.classList.remove('hidden');
+          var status = document.querySelector('[data-nl-status]');
+          if (status) {
+            status.textContent = 'Confirmed';
+            status.className = 'font-label-sm text-label-sm bg-secondary text-on-secondary px-2 py-0.5 rounded-full font-medium shadow-sm';
+          }
+          if (window.NL) { NL.toast('Availability confirmed — the care desk has been notified', 'olive'); NL.applyLang(document.body); }
+        }, 800);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(37,35,33,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-gutter"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="home" href="app.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">spa</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Home</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 transition-colors duration-200 group text-primary font-semibold" data-path="journey" href="journey.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">auto_stories</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Journey</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="care" href="care-plan.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">healing</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Care</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="messages" href="more.html#messages"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">chat_bubble_outline</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Messages</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="more" href="more.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">more_horiz</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">More</span></a></div></nav><script src="assets/i18n.js?v=4"></script><script src="assets/nurtureloop.js?v=4"></script></body></html>

@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>NurtureLoop — From clinical instructions to completed care</title>
+<meta name="description" content="NurtureLoop is a patient-controlled maternal care continuity companion. From the hospital to home, care stays connected — assistive, not diagnostic."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        ivory: '#F7F3EA', 'warm-white': '#FCFAF5', ink: '#252321', terracotta: '#C96F52',
+        'terracotta-deep': '#A5533B', rose: '#D8A49A', olive: '#536052', sage: '#AAB5A0',
+        saffron: '#D99A42', 'sand-line': '#D9CFBD', 'stone-warm': '#8B857A'
+      },
+      fontFamily: {
+        serif: ['"DM Serif Display"', 'Georgia', 'serif'],
+        sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif']
+      },
+      fontSize: {
+        'display-xl': ['clamp(3.5rem,9vw,7.5rem)', { lineHeight: '0.98', letterSpacing: '-0.02em' }],
+        'display-lg': ['clamp(2.75rem,6vw,4.5rem)', { lineHeight: '1.04', letterSpacing: '-0.02em' }],
+        'display-md': ['clamp(2rem,4.2vw,3.25rem)', { lineHeight: '1.08', letterSpacing: '-0.01em' }],
+        'lead': ['clamp(1.125rem,1.8vw,1.375rem)', { lineHeight: '1.65' }]
+      },
+      letterSpacing: { widest2: '0.28em' },
+      maxWidth: { '8xl': '88rem' },
+      keyframes: {
+        driftA: { '0%,100%': { transform: 'translate(0,0) scale(1)' }, '50%': { transform: 'translate(4vw,-3vh) scale(1.08)' } },
+        driftB: { '0%,100%': { transform: 'translate(0,0) scale(1)' }, '50%': { transform: 'translate(-3vw,4vh) scale(0.94)' } },
+        breathe: { '0%,100%': { transform: 'scale(1)', opacity: '0.5' }, '50%': { transform: 'scale(1.06)', opacity: '0.85' } },
+        bounceSoft: { '0%,100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(8px)' } },
+        dashFlow: { to: { 'stroke-dashoffset': '-22' } },
+        dashFlowSlow: { to: { 'stroke-dashoffset': '-46' } },
+        ringPulse: { '0%': { transform: 'scale(0.6)', opacity: '0.8' }, '100%': { transform: 'scale(2.1)', opacity: '0' } },
+        wavePulse: { from: { transform: 'scaleY(0.3)' }, to: { transform: 'scaleY(1)' } }
+      },
+      animation: {
+        'drift-a': 'driftA 26s ease-in-out infinite', 'drift-b': 'driftB 32s ease-in-out infinite',
+        'breathe': 'breathe 7s ease-in-out infinite',
+        'bounce-soft': 'bounceSoft 2.4s ease-in-out infinite',
+        'dash-flow': 'dashFlow 1.6s linear infinite', 'dash-flow-slow': 'dashFlowSlow 2.6s linear infinite',
+        'ring-pulse': 'ringPulse 2.2s ease-out infinite'
+      }
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #F7F3EA; }
+  ::selection { background: #D8A49A; color: #252321; }
+  .grain::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 1; opacity: .5;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+  .serif-italic { font-family: "DM Serif Display", Georgia, serif; font-style: italic; }
+  @media (min-width: 1024px) {
+    .lg-tilt { transform: perspective(1100px) rotateY(-7deg) rotateX(2deg); transition: transform .6s cubic-bezier(.2,.8,.3,1); }
+    .lg-tilt:hover { transform: perspective(1100px) rotateY(-4deg) rotateX(1deg) translateY(-4px); }
+  }
+  .magnetic { will-change: transform; }
+  #landing-nav { transition: background .5s, box-shadow .5s, backdrop-filter .5s; }
+  #landing-nav .nl-lang-holder { margin-left: auto; }
+  /* Phones: the header keeps only the essentials so nothing clips. */
+  @media (max-width: 639px) {
+    #landing-nav .nl-conn { display: none; }
+  }
+  #landing-nav.is-solid { background: rgba(247,243,234,0.88); backdrop-filter: blur(14px); box-shadow: 0 1px 0 rgba(37,35,33,0.06); }
+  #nl-dot { position: fixed; z-index: 9999; width: 6px; height: 6px; border-radius: 9999px; background: #C96F52; pointer-events: none; left: 0; top: 0; opacity: 0; transition: opacity .3s; }
+  #nl-ring { position: fixed; z-index: 9998; width: 38px; height: 38px; border-radius: 9999px; border: 1.5px solid rgba(201,111,82,.55); pointer-events: none; left: 0; top: 0; opacity: 0; transition: opacity .3s, width .28s cubic-bezier(.2,.8,.3,1), height .28s cubic-bezier(.2,.8,.3,1), border-color .28s, background-color .28s; }
+  #nl-ring.is-hover { width: 56px; height: 56px; border-color: #C96F52; background: rgba(201,111,82,.07); }
+  #nl-ring.is-press { border-color: #A5533B; }
+  @media (pointer: fine) {
+    html.nl-cursor, html.nl-cursor a, html.nl-cursor button, html.nl-cursor [role="button"], html.nl-cursor input, html.nl-cursor textarea, html.nl-cursor select { cursor: none; }
+  }
+  .nl-trail-dot { position: fixed; z-index: 9997; width: 4px; height: 4px; border-radius: 9999px; background: rgba(201,111,82,.4); pointer-events: none; left: 0; top: 0; }
+  html:not(.nl-cursor) #nl-dot, html:not(.nl-cursor) #nl-ring, html:not(.nl-cursor) .nl-trail-dot { display: none; }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); transition-delay: var(--d, 0ms); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  /* ── Mobile recomposition ─────────────────────
+     The compact loop stays as a brand mark; the full-bleed collage and
+     orbit become simple stacked layouts below 640px. */
+  .loop-mini { display: none; }
+  @media (max-width: 767px) {
+    .loop-mini { display: flex; align-items: center; justify-content: center; margin: 3rem auto 0; width: 190px; height: 190px; position: relative; }
+    .loop-mini svg { width: 100%; height: 100%; }
+  }
+  @media (max-width: 639px) {
+    #fragment-stage { min-height: 0 !important; }
+    #fragment-stage .frag { position: static !important; transform: none !important; width: 100% !important; margin-bottom: .8rem; }
+    #fragment-stage .frag:nth-child(5) { width: 100% !important; margin-left: 0 !important; }
+    #carecircle .orbit-wrap { padding: 0 !important; }
+    #carecircle .orbit-card { position: static !important; transform: none !important; width: 100% !important; margin: .6rem 0; }
+    #carecircle .orbit-center { margin: 0 auto 1rem !important; }
+    #carecircle .orbit-ring { position: static !important; width: 200px !important; height: 200px !important; margin: 0 auto .5rem !important; }
+  }
+  .frag { transition: transform 1.1s cubic-bezier(.2,.7,.2,1), opacity 1.1s; }
+  .is-connected .frag { opacity: .45; transform: scale(.96); }
+  .is-connected .frag:nth-child(5) { opacity: 1; transform: scale(1.03); }
+  .journey-stage .node-dot { transition: background .5s, box-shadow .5s; }
+  .journey-stage .node-dot.is-lit { background: #C96F52; box-shadow: 0 0 0 6px rgba(201,111,82,.15); }
+  .bridge-step { transition: opacity .5s; }
+  .bridge-step[data-state="pending"] { opacity: .45; }
+  .audio-bar, .wave-bar { transform-origin: center bottom; animation: wavePulse 1.15s ease-in-out infinite alternate; }
+  @keyframes wavePulse { from { transform: scaleY(0.3); } to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    #nl-dot, #nl-ring, .nl-trail-dot { display: none !important; }
+    html.nl-cursor, html.nl-cursor a, html.nl-cursor button { cursor: auto; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="bg-ivory text-ink font-sans antialiased overflow-x-hidden">
+
+<div id="nl-dot"></div>
+<div id="nl-ring"></div>
+
+<!-- ── Navigation ───────────────────────────────── -->
+<header id="landing-nav" class="fixed top-0 inset-x-0 z-40">
+  <div class="max-w-8xl mx-auto flex items-center justify-between gap-2 h-16 lg:h-20 px-4 sm:px-8 lg:px-12">
+    <a href="#top" class="flex items-center gap-2 sm:gap-2.5 group min-w-0 shrink">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" class="text-terracotta transition-transform duration-700 group-hover:rotate-[360deg]">
+        <path d="M15 3.5a11.5 11.5 0 1 0 11.5 11.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+        <circle cx="15" cy="15" r="4.2" stroke="currentColor" stroke-width="2"/>
+        <circle cx="24.4" cy="7.2" r="2.6" fill="currentColor"/>
+      </svg>
+      <span class="font-serif text-[17px] sm:text-xl lg:text-2xl tracking-tight whitespace-nowrap">NurtureLoop</span>
+    </a>
+    <nav class="hidden lg:flex items-center gap-6 font-medium text-[14px] text-stone-warm">
+      <a href="#features" data-nl-nav="product" class="hover:text-ink transition-colors">Product</a>
+      <a href="#journey" class="hover:text-ink transition-colors">How it works</a>
+      <a href="#carebridge" class="hover:text-ink transition-colors">CareBridge</a>
+      <a href="#sakhi" class="hover:text-ink transition-colors">SakhiVoice</a>
+      <a href="#safety" class="hover:text-ink transition-colors">Safety</a>
+      <a href="#footer" class="hover:text-ink transition-colors">About</a>
+    </nav>
+    <a href="app.html" data-enter class="group flex shrink-0 items-center gap-2 rounded-full bg-ink text-ivory px-3.5 sm:px-5 py-2.5 text-[13px] sm:text-sm font-semibold whitespace-nowrap hover:bg-terracotta-deep transition-colors duration-300">
+      Enter NurtureLoop
+      <span class="material-symbols-outlined text-base hidden sm:inline transition-transform duration-300 group-hover:translate-x-0.5">arrow_forward</span>
+    </a>
+  </div>
+</header>
+
+<!-- ══ HERO ══════════════════════════════════════ -->
+<section id="top" class="relative min-h-[100svh] grain overflow-hidden flex flex-col">
+  <div class="absolute inset-0 pointer-events-none" id="hero-bg">
+    <div class="absolute inset-0 bg-[radial-gradient(120%_85%_at_50%_0%,#FCFAF5_0%,#F7F3EA_55%,#F1EADC_100%)]"></div>
+    <div class="absolute -top-[15%] -left-[10%] w-[55vw] h-[55vw] rounded-full bg-rose/40 blur-3xl animate-drift-a"></div>
+    <div class="absolute top-[30%] -right-[15%] w-[50vw] h-[50vw] rounded-full bg-sage/40 blur-3xl animate-drift-b"></div>
+    <div class="absolute bottom-[-20%] left-[25%] w-[45vw] h-[45vw] rounded-full bg-saffron/25 blur-3xl animate-drift-a"></div>
+  </div>
+  <canvas id="dotfield" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+  <svg class="absolute inset-0 w-full h-full pointer-events-none text-terracotta/25" fill="none" preserveAspectRatio="none" viewBox="0 0 1440 900">
+    <path d="M-60 620 C 300 560, 560 760, 900 660 S 1400 520, 1520 600" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 7" class="animate-dash-flow-slow"/>
+    <path d="M-60 250 C 380 330, 720 180, 1080 260 S 1440 330, 1520 290" stroke="currentColor" stroke-width="1" stroke-dasharray="2 8" class="animate-dash-flow-slow"/>
+  </svg>
+
+  <div class="relative z-10 max-w-8xl mx-auto w-full px-5 sm:px-8 lg:px-12 flex-1 flex flex-col justify-center pt-28 pb-16">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div class="lg:col-span-7">
+        <p class="text-[11px] tracking-widest2 uppercase font-semibold text-olive mb-6 lg:mb-8 flex items-center gap-3">
+          <span class="w-10 h-px bg-olive/50"></span>
+          Maternal care continuity companion
+        </p>
+        <h1 class="font-serif text-display-xl text-ink">
+          Care<br class="hidden sm:block"/> should <span class="serif-italic text-terracotta">continue.</span>
+        </h1>
+        <p class="mt-6 lg:mt-8 text-lg lg:text-xl leading-relaxed text-ink/70 max-w-xl font-light">
+          NurtureLoop keeps the journey connected — from clinical instructions to the next visit.
+        </p>
+        <div class="mt-9 lg:mt-11 flex flex-col sm:flex-row sm:items-center gap-4">
+          <a href="app.html" data-enter class="magnetic group inline-flex items-center justify-center gap-2.5 rounded-full bg-terracotta text-warm-white px-8 py-4 font-semibold text-[15px] shadow-[0_12px_32px_-10px_rgba(201,111,82,0.55)] hover:bg-terracotta-deep hover:-translate-y-0.5 transition-all duration-300">
+            Explore NurtureLoop
+            <span class="material-symbols-outlined text-lg transition-transform duration-300 group-hover:translate-x-1">arrow_outward</span>
+          </a>
+          <a href="#journey" class="magnetic inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-8 py-4 font-medium text-[15px] text-ink hover:border-terracotta hover:text-terracotta-deep transition-colors duration-300">
+            See how it works
+          </a>
+        </div>
+        <p class="mt-10 lg:mt-12 flex items-center gap-2.5 text-[12px] tracking-[0.14em] uppercase text-stone-warm">
+          <span class="w-1.5 h-1.5 rounded-full bg-sage"></span>
+          Assistive, not diagnostic
+        </p>
+
+        <!-- Compact mobile loop: the brand continuity mark on phones. -->
+        <div class="loop-mini" aria-hidden="true">
+          <svg viewBox="0 0 200 220" fill="none">
+            <defs>
+              <linearGradient id="ribbonGradMini" x1="0" y1="0" x2="200" y2="220" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#C96F52"/><stop offset="0.5" stop-color="#D8A49A"/><stop offset="1" stop-color="#AAB5A0"/>
+              </linearGradient>
+            </defs>
+            <path d="M100 36 C 152 36, 162 82, 162 110 C 162 138, 152 184, 100 184 C 48 184, 38 138, 38 110 C 38 82, 48 36, 100 36" stroke="url(#ribbonGradMini)" stroke-width="8" stroke-linecap="round"/>
+            <path d="M100 56 C 138 56, 144 88, 144 110 C 144 132, 138 164, 100 164 C 62 164, 56 132, 56 110 C 56 88, 62 56, 100 56" stroke="#536052" stroke-opacity="0.35" stroke-width="1.4" stroke-dasharray="3 8"/>
+            <circle id="mini-bead" r="5.5" fill="#C96F52"/>
+          </svg>
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <span class="material-symbols-outlined text-terracotta text-3xl">all_inclusive</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 relative hidden lg:flex items-center justify-center">
+        <div id="loop-stage" class="relative w-[420px] h-[460px] [perspective:1200px] transition-transform duration-200 ease-out">
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="w-[340px] h-[340px] rounded-full bg-[radial-gradient(closest-side,rgba(201,111,82,0.14),transparent_70%)] animate-breathe"></div>
+          </div>
+          <svg id="loop-ribbon" class="absolute inset-0 w-full h-full" viewBox="0 0 420 460" fill="none">
+            <defs>
+              <linearGradient id="ribbonGrad" x1="0" y1="0" x2="420" y2="460" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#C96F52"/><stop offset="0.5" stop-color="#D8A49A"/><stop offset="1" stop-color="#AAB5A0"/>
+              </linearGradient>
+              <filter id="softGlow" x="-40%" y="-40%" width="180%" height="180%">
+                <feDropShadow dx="0" dy="10" stdDeviation="18" flood-color="#A5533B" flood-opacity="0.18"/>
+              </filter>
+            </defs>
+            <g filter="url(#softGlow)">
+              <path id="ribbonPath" d="M210 70 C 330 70, 350 165, 350 230 C 350 295, 330 390, 210 390 C 90 390, 70 295, 70 230 C 70 165, 90 70, 210 70" stroke="url(#ribbonGrad)" stroke-width="10" stroke-linecap="round"/>
+            </g>
+            <path d="M210 110 C 300 110, 312 180, 312 230 C 312 280, 300 350, 210 350 C 120 350, 108 280, 108 230 C 108 180, 120 110, 210 110" stroke="#536052" stroke-opacity="0.35" stroke-width="1.6" stroke-dasharray="3 9" class="animate-dash-flow"/>
+            <circle id="ribbon-bead" r="7" fill="#C96F52"/>
+            <circle id="ribbon-bead-halo" r="12" fill="none" stroke="#C96F52" stroke-width="1.5" opacity="0.5"/>
+          </svg>
+          <div id="loop-chips" class="absolute inset-0 text-[10px] font-semibold tracking-[0.16em] uppercase text-ink/60">
+            <span class="absolute left-1/2 -translate-x-1/2 top-[38px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Care plan</span>
+            <span class="absolute right-0 top-[218px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Understand</span>
+            <span class="absolute right-10 bottom-[38px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Act</span>
+            <span class="absolute left-10 bottom-[38px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Connect</span>
+            <span class="absolute left-0 top-[218px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Support</span>
+            <span class="absolute left-1/2 -translate-x-1/2 top-[400px] bg-warm-white/85 rounded-full px-3 py-1 ring-1 ring-sand-line">Continue</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative z-10 flex justify-center mt-14 lg:mt-20">
+      <a href="#product" class="flex flex-col items-center gap-2 text-stone-warm hover:text-terracotta transition-colors" aria-label="Scroll to content">
+        <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+        <span class="material-symbols-outlined animate-bounce-soft">keyboard_arrow_down</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 2: THE PROBLEM ═══════════════════════ -->
+<section id="product" class="relative py-28 lg:py-40 grain overflow-hidden">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta mb-6">The problem</p>
+    <h2 class="reveal font-serif text-display-lg text-ink max-w-4xl">After discharge, the journey <span class="serif-italic text-terracotta">doesn’t stop.</span></h2>
+    <p class="reveal mt-6 text-lead text-ink/65 max-w-2xl font-light">Instructions on paper. Appointments in one app. Referrals on the phone. Questions in your head. The next step exists — but nothing connects them.</p>
+
+    <div class="mt-16 lg:mt-24 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
+      <!-- fragmented papers -->
+      <div class="relative min-h-[380px] lg:min-h-[440px]" id="fragment-stage">
+        <div class="frag absolute left-[6%] top-[4%] w-56 sm:w-64 rotate-[-6deg] bg-warm-white rounded-sm shadow-[0_18px_40px_-18px_rgba(37,35,33,0.25)] p-5 reveal" style="--d:0ms">
+          <p class="text-[10px] tracking-widest2 uppercase text-terracotta font-semibold mb-2">Discharge papers</p>
+          <div class="space-y-1.5">
+            <div class="h-1.5 rounded bg-sand-line w-11/12"></div>
+            <div class="h-1.5 rounded bg-sand-line w-4/5"></div>
+            <div class="h-1.5 rounded bg-sand-line w-3/5"></div>
+          </div>
+        </div>
+        <div class="frag absolute right-[4%] top-[18%] w-52 sm:w-56 rotate-[5deg] bg-warm-white rounded-sm shadow-[0_18px_40px_-18px_rgba(37,35,33,0.25)] p-5 reveal" style="--d:120ms">
+          <p class="text-[10px] tracking-widest2 uppercase text-olive font-semibold mb-2">Appointments</p>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-saffron"></span><div class="h-1.5 rounded bg-sand-line flex-1"></div></div>
+            <div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-rose"></span><div class="h-1.5 rounded bg-sand-line flex-1"></div></div>
+          </div>
+        </div>
+        <div class="frag absolute left-[10%] bottom-[8%] w-52 sm:w-60 rotate-[3deg] bg-warm-white rounded-sm shadow-[0_18px_40px_-18px_rgba(37,35,33,0.25)] p-5 reveal" style="--d:240ms">
+          <p class="text-[10px] tracking-widest2 uppercase text-terracotta font-semibold mb-2">Referrals</p>
+          <div class="h-1.5 rounded bg-sand-line w-5/6 mb-1.5"></div>
+          <div class="h-1.5 rounded bg-sand-line w-2/3"></div>
+        </div>
+        <div class="frag absolute right-[10%] bottom-[2%] w-48 sm:w-56 rotate-[-4deg] bg-warm-white rounded-sm shadow-[0_18px_40px_-18px_rgba(37,35,33,0.25)] p-5 reveal" style="--d:360ms">
+          <p class="text-[10px] tracking-widest2 uppercase text-olive font-semibold mb-2">Questions</p>
+          <div class="h-1.5 rounded bg-sand-line w-5/6 mb-1.5"></div>
+          <div class="h-1.5 rounded bg-sand-line w-1/2"></div>
+        </div>
+        <div class="frag absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-44 sm:w-52 bg-warm-white rounded-sm shadow-[0_24px_50px_-18px_rgba(201,111,82,0.4)] p-5 reveal" style="--d:480ms">
+          <p class="text-[10px] tracking-widest2 uppercase text-terracotta font-semibold mb-2">Caregiver coordination</p>
+          <div class="h-1.5 rounded bg-sand-line w-5/6 mb-1.5"></div>
+          <div class="h-1.5 rounded bg-sand-line w-1/2"></div>
+        </div>
+      </div>
+      <!-- connected thread -->
+      <div class="relative">
+        <div class="rounded-sm bg-warm-white ring-1 ring-sand-line p-7 lg:p-10 reveal" style="--d:150ms">
+          <div class="flex items-center gap-3 mb-6">
+            <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-terracotta">
+              <path d="M15 3.5a11.5 11.5 0 1 0 11.5 11.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <circle cx="15" cy="15" r="4.2" stroke="currentColor" stroke-width="2"/>
+              <circle cx="24.4" cy="7.2" r="2.6" fill="currentColor"/>
+            </svg>
+            <span class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/70">One connected journey</span>
+          </div>
+          <div class="relative pl-8">
+            <svg class="absolute left-3 top-2 h-[calc(100%-16px)] w-4" viewBox="0 0 16 320" fill="none" preserveAspectRatio="none">
+              <path d="M8 4 V 316" stroke="#C96F52" stroke-width="2" stroke-dasharray="3 7"/>
+            </svg>
+            <div class="space-y-5">
+              <div class="reveal" style="--d:200ms"><div class="flex items-baseline gap-3"><span class="text-[10px] font-bold text-terracotta w-12 shrink-0">OCT 12</span><p class="font-medium">Discharge instructions reviewed with Dr. Rao</p></div></div>
+              <div class="reveal" style="--d:300ms"><div class="flex items-baseline gap-3"><span class="text-[10px] font-bold text-terracotta w-12 shrink-0">OCT 15</span><p class="font-medium">Postpartum follow-up · City Maternity, 11:30 AM</p></div></div>
+              <div class="reveal" style="--d:400ms"><div class="flex items-baseline gap-3"><span class="text-[10px] font-bold text-terracotta w-12 shrink-0">OCT 18</span><p class="font-medium">Referral to physiotherapy — documents ready</p></div></div>
+              <div class="reveal" style="--d:500ms"><div class="flex items-baseline gap-3"><span class="text-[10px] font-bold text-terracotta w-12 shrink-0">OCT 21</span><p class="font-medium">Pooja picks up medicines · Rahul on baby watch</p></div></div>
+            </div>
+          </div>
+          <div class="mt-8 pt-5 border-t border-sand-line flex items-center justify-between">
+            <span class="text-[12px] text-stone-warm">Meena’s journey · Day 14</span>
+            <span class="text-[12px] font-semibold text-olive flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-sage"></span>Everything in one thread</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 3: THE JOURNEY ═══════════════════════ -->
+<section id="journey" class="relative py-28 lg:py-40 bg-ink text-ivory grain overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(90%_60%_at_50%_0%,rgba(201,111,82,0.14),transparent_60%)]"></div>
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12 relative">
+    <div class="flex items-baseline justify-between flex-wrap gap-4 mb-14 lg:mb-20">
+      <h2 class="reveal font-serif text-display-lg max-w-3xl">One journey. <span class="serif-italic text-rose">Every next step connected.</span></h2>
+      <p class="reveal text-ivory/55 text-sm max-w-xs" style="--d:120ms">Six stages, one continuous line. Scroll and the thread draws itself.</p>
+    </div>
+    <div class="relative pl-10 sm:pl-14" id="journey-track">
+      <div class="absolute left-[7px] sm:left-[11px] top-2 bottom-2 w-px bg-ivory/15"></div>
+      <div id="journey-progress" class="absolute left-[7px] sm:left-[11px] top-2 w-px bg-terracotta" style="height:0%"></div>
+      <div class="space-y-12 lg:space-y-16">
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">01 — Care plan</p>
+          <h3 class="font-serif text-display-md mt-2">What to do, and when.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">Your clinician’s plan becomes a living timeline — instructions, dates and locations in plain language.</p>
+        </div>
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">02 — Understand</p>
+          <h3 class="font-serif text-display-md mt-2">In your language, at your pace.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">SakhiVoice translates clinical wording into calm, everyday language — spoken aloud if you prefer.</p>
+        </div>
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">03 — Act</p>
+          <h3 class="font-serif text-display-md mt-2">Gentle actions, clearly guided.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">Confirm visits, upload documents, ask questions — one tap each.</p>
+        </div>
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">04 — Connect</p>
+          <h3 class="font-serif text-display-md mt-2">Referrals that never drop.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">CareBridge hands your story to the next clinic with everything intact.</p>
+        </div>
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">05 — Support</p>
+          <h3 class="font-serif text-display-md mt-2">Your people, on your terms.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">CareCircle brings partner, sister, mother and care team into the loop — with boundaries you set.</p>
+        </div>
+        <div class="journey-stage reveal">
+          <span class="node-dot absolute -left-10 sm:-left-14 top-1 w-4 h-4 rounded-full border-2 border-terracotta bg-ink"></span>
+          <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold">06 — Continue</p>
+          <h3 class="font-serif text-display-md mt-2">Care that carries forward.</h3>
+          <p class="mt-2 text-ivory/60 max-w-xl font-light">Every visit closes and opens the next — follow-ups scheduled, questions carried, nothing lost.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 4: FEATURES ═══════════════════════ -->
+<section id="features" class="relative py-28 lg:py-40 grain overflow-hidden">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta mb-6">What’s inside</p>
+    <h2 class="reveal font-serif text-display-lg max-w-3xl">Built for the whole journey — <span class="serif-italic text-olive">mother, baby and everyone around them.</span></h2>
+
+    <div class="mt-16 lg:mt-24 space-y-20 lg:space-y-32">
+      <!-- FEATURE 01 — Care Journey -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 01</p>
+          <h3 class="reveal font-serif text-display-md mt-3">Care Journey</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“See what comes next.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">A single editorial timeline of your recovery — completed steps, today’s visit, upcoming needs — the same screen you’ll meet inside the app.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Today’s visit highlighted with time and place</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Gentle actions checklist you can actually finish</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Questions carried to the care team automatically</li>
+          </ul>
+        </div>
+        <div class="reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_30px_80px_-30px_rgba(37,35,33,0.3)] overflow-hidden max-w-md ml-auto" id="mock-journey">
+            <div class="flex items-center justify-between px-5 py-3 border-b border-sand-line">
+              <span class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60">Your journey</span>
+              <span class="text-[10px] text-stone-warm">Timeline archive</span>
+            </div>
+            <div class="p-5 space-y-4 relative">
+              <div class="absolute left-[27px] top-7 bottom-7 w-px bg-sand-line"></div>
+              <div class="flex gap-3">
+                <span class="journey-dot relative z-10 w-4 h-4 rounded-full bg-sage ring-4 ring-warm-white flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[10px] text-warm-white">check</span></span>
+                <div class="pb-1">
+                  <p class="text-[10px] tracking-widest2 uppercase text-stone-warm">12 Oct · Completed</p>
+                  <p class="text-sm font-medium mt-0.5">Discharge instructions — reviewed</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <span class="journey-dot relative z-10 w-4 h-4 rounded-full bg-terracotta ring-4 ring-warm-white flex items-center justify-center shrink-0"><span class="w-1.5 h-1.5 rounded-full bg-warm-white animate-pulse"></span></span>
+                <div class="flex-1 rounded-sm bg-ivory p-4">
+                  <div class="flex items-center justify-between">
+                    <p class="text-[10px] tracking-widest2 uppercase text-terracotta font-bold flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-terracotta animate-pulse"></span>Today · 15 Oct</p>
+                    <span class="text-[10px] text-stone-warm bg-warm-white px-2 py-0.5 rounded-full">11:30 AM</span>
+                  </div>
+                  <p class="text-base font-semibold mt-1">Postpartum follow-up</p>
+                  <p class="text-xs text-stone-warm mt-0.5 flex items-center gap-1"><span class="material-symbols-outlined text-sm">location_on</span>City Maternity Hospital · Suite 3B</p>
+                </div>
+              </div>
+              <div class="flex gap-3">
+                <span class="journey-dot relative z-10 w-4 h-4 rounded-full bg-rose ring-4 ring-warm-white shrink-0"></span>
+                <div class="pb-1">
+                  <p class="text-[10px] tracking-widest2 uppercase text-stone-warm">18 Oct · Upcoming</p>
+                  <p class="text-sm font-medium mt-0.5">Documents to bring · 2 items</p>
+                </div>
+              </div>
+            </div>
+            <div class="px-5 pb-5">
+              <div class="flex items-center gap-2 text-xs text-ink/70">
+                <span class="w-6 h-6 rounded-full bg-sage flex items-center justify-center text-[10px] font-bold text-warm-white">A</span>
+                With Dr. Anita Sharma
+                <span class="ml-auto text-terracotta font-semibold">View visit notes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- FEATURE 02 — CareBridge -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_30px_80px_-30px_rgba(37,35,33,0.3)] p-7 max-w-md mx-auto lg:mx-0" id="mock-bridge">
+            <p class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60 mb-6">Referral continuity</p>
+            <div class="space-y-5">
+              <div class="bridge-step flex items-center gap-4" data-state="done">
+                <span class="bridge-node w-9 h-9 rounded-full bg-sage flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-warm-white text-base">check</span></span>
+                <div><p class="text-sm font-semibold">Community Clinic</p><p class="text-xs text-stone-warm">Referral created · 14 Oct</p></div>
+                <span class="ml-auto text-[10px] tracking-widest2 uppercase text-stone-warm bridge-label">Done</span>
+              </div>
+              <div class="bridge-step flex items-center gap-4" data-state="active">
+                <span class="bridge-node w-9 h-9 rounded-full bg-terracotta flex items-center justify-center shrink-0 relative"><span class="absolute inset-0 rounded-full ring-2 ring-terracotta animate-ring-pulse"></span><span class="w-2 h-2 rounded-full bg-warm-white"></span></span>
+                <div><p class="text-sm font-semibold">Scheduled</p><p class="text-xs text-stone-warm">Physiotherapy · 18 Oct 10:00</p></div>
+                <span class="ml-auto text-[10px] tracking-widest2 uppercase text-terracotta bridge-label">In progress</span>
+              </div>
+              <div class="bridge-step flex items-center gap-4" data-state="pending">
+                <span class="bridge-node w-9 h-9 rounded-full bg-ivory ring-1 ring-sand-line shrink-0"></span>
+                <div><p class="text-sm font-semibold text-ink/40">Confirmed</p><p class="text-xs text-stone-warm/70">Records shared with City Maternity</p></div>
+                <span class="ml-auto text-[10px] tracking-widest2 uppercase text-stone-warm/70 bridge-label">Up next</span>
+              </div>
+              <div class="bridge-step flex items-center gap-4" data-state="pending">
+                <span class="bridge-node w-9 h-9 rounded-full bg-ivory ring-1 ring-sand-line shrink-0"></span>
+                <div><p class="text-sm font-semibold text-ink/40">Completed</p><p class="text-xs text-stone-warm/70">Awaiting visit</p></div>
+                <span class="ml-auto text-[10px] tracking-widest2 uppercase text-stone-warm/70 bridge-label">Up next</span>
+              </div>
+            </div>
+            <div class="mt-7 pt-5 border-t border-sand-line flex items-center gap-2 text-xs text-stone-warm">
+              <span class="material-symbols-outlined text-base text-olive">sync</span>Records travel with the referral — no re-explaining.
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-start gap-3 mt-6" id="bridge-controls">
+            <button data-bridge="1" class="text-xs font-semibold px-4 py-2 rounded-full bg-ink text-ivory hover:bg-terracotta-deep transition-colors">Restart demo</button>
+            <button data-bridge="0" class="text-xs font-semibold px-4 py-2 rounded-full ring-1 ring-sand-line text-ink/70">Show completed</button>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 02</p>
+          <h3 class="reveal font-serif text-display-md mt-3">CareBridge</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“Keep referrals moving.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">When your care moves between clinics, the referral carries your plan, documents and history — so the next team starts where the last one ended.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Status: created → scheduled → confirmed → completed</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Documents shared with consent, never re-faxed</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Both sides of the handover see the same thread</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- FEATURE 03 — SakhiVoice -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 03</p>
+          <h3 class="reveal font-serif text-display-md mt-3">SakhiVoice</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“Understand care in your language.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">Speak a question in English, தமிழ் or हिन्दी. Hear your care plan read back calmly, in words you’d use at home.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Voice-first — built for low-literacy and low-vision access</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Approved clinical phrasing, simplified — never reinterpreted</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Works offline for saved responses</li>
+          </ul>
+        </div>
+        <div class="reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-ink text-ivory shadow-[0_30px_80px_-30px_rgba(37,35,33,0.5)] p-7 max-w-md ml-auto" id="mock-voice">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-5">
+              <p class="text-[11px] tracking-widest2 uppercase font-semibold text-ivory/60">SakhiVoice</p>
+              <div class="flex gap-1.5 text-[11px]" id="voice-langs">
+                <button data-lang="English" class="px-3 py-1 rounded-full bg-terracotta text-warm-white font-semibold">English</button>
+                <button data-lang="ta" class="px-3 py-1 rounded-full ring-1 ring-ivory/20 text-ivory/70">தமிழ்</button>
+                <button data-lang="hi" class="px-3 py-1 rounded-full ring-1 ring-ivory/20 text-ivory/70">हिन्दी</button>
+              </div>
+            </div>
+            <div class="rounded-sm bg-ivory/5 ring-1 ring-ivory/10 p-4">
+              <p class="text-xs text-ivory/50 mb-1">You ask</p>
+              <p class="text-sm" id="voice-q">“What is my next appointment?”</p>
+            </div>
+            <div class="mt-4 flex items-center gap-3" id="voice-wave">
+              <span class="w-1 h-4 rounded-full bg-rose audio-bar" style="animation-delay:0ms"></span>
+              <span class="w-1 h-7 rounded-full bg-rose audio-bar" style="animation-delay:120ms"></span>
+              <span class="w-1 h-5 rounded-full bg-terracotta audio-bar" style="animation-delay:240ms"></span>
+              <span class="w-1 h-8 rounded-full bg-rose audio-bar" style="animation-delay:360ms"></span>
+              <span class="w-1 h-3 rounded-full bg-rose audio-bar" style="animation-delay:480ms"></span>
+              <span class="w-1 h-6 rounded-full bg-terracotta audio-bar" style="animation-delay:600ms"></span>
+            </div>
+            <div class="mt-4 rounded-sm bg-terracotta/20 ring-1 ring-terracotta/30 p-4">
+              <p class="text-xs text-rose/80 mb-1">Sakhi answers</p>
+              <p class="text-sm" id="voice-a">“15 October · City Maternity Hospital, 11:30 in the morning. Pooja is driving you.”</p>
+            </div>
+            <div class="mt-5 flex items-center gap-2 text-[11px] text-ivory/40">
+              <span class="material-symbols-outlined text-sm">graphic_eq</span>
+              <span id="voice-status">Speaking in English · calm pace</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- FEATURE 04 — CareCircle -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_30px_80px_-30px_rgba(37,35,33,0.3)] p-7 max-w-md mx-auto lg:mx-0" id="mock-circle">
+            <p class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60 mb-6">Who sees what · Meena’s choices</p>
+            <div class="space-y-4">
+              <div class="perm-row flex items-start gap-3">
+                <span class="w-9 h-9 rounded-full bg-rose flex items-center justify-center text-warm-white font-bold text-sm shrink-0">R</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold">Rahul · Partner</p>
+                  <div class="mt-1.5 flex flex-wrap gap-1.5 text-[11px]">
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Appointments</span>
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Location</span>
+                    <span class="perm-chip off px-2 py-0.5 rounded-full bg-ink/5 text-ink/40 ring-1 ring-ink/10">✕ Private notes</span>
+                  </div>
+                </div>
+              </div>
+              <div class="perm-row flex items-start gap-3">
+                <span class="w-9 h-9 rounded-full bg-sage flex items-center justify-center text-warm-white font-bold text-sm shrink-0">P</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold">Pooja · Sister</p>
+                  <div class="mt-1.5 flex flex-wrap gap-1.5 text-[11px]">
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Appointments</span>
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Transport</span>
+                    <span class="perm-chip off px-2 py-0.5 rounded-full bg-ink/5 text-ink/40 ring-1 ring-ink/10">✕ Private notes</span>
+                  </div>
+                </div>
+              </div>
+              <div class="perm-row flex items-start gap-3">
+                <span class="w-9 h-9 rounded-full bg-terracotta flex items-center justify-center text-warm-white font-bold text-sm shrink-0">D</span>
+                <div class="flex-1">
+                  <p class="text-sm font-semibold">Dr. Sharma · Care team</p>
+                  <div class="mt-1.5 flex flex-wrap gap-1.5 text-[11px]">
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Full record</span>
+                    <span class="perm-chip on px-2 py-0.5 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">✓ Questions</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 04</p>
+          <h3 class="reveal font-serif text-display-md mt-3">CareCircle</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“Bring trusted people into the journey.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">CareCircle lets you add the people who help — and choose exactly what each one can see. Support without giving up privacy.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Per-person permissions, changed anytime</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Tasks, transport and baby-watch coordination</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Private notes stay yours alone</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- FEATURE 05 — JananiConnect -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 05</p>
+          <h3 class="reveal font-serif text-display-md mt-3">JananiConnect</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“Stay connected, even offline.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">Signal drops on the way to clinic? Your saved care journey, documents and answers stay readable — and sync the moment you’re back.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Offline-first storage of the full journey</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Online → offline → syncing → up to date</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Built for tier-2/3 connectivity realities</li>
+          </ul>
+        </div>
+        <div class="reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_30px_80px_-30px_rgba(37,35,33,0.3)] p-7 max-w-md ml-auto" id="mock-offline">
+            <div class="flex items-center justify-between mb-6">
+              <p class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60">Connection</p>
+              <span class="net-badge text-[10px] font-bold tracking-widest2 uppercase px-3 py-1 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">Online</span>
+            </div>
+            <div class="space-y-3">
+              <div class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-base text-olive">auto_stories</span>Saved care journey<span class="ml-auto material-symbols-outlined text-base text-sage">check_circle</span></div>
+              <div class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-base text-olive">description</span>Documents · 4 files<span class="ml-auto material-symbols-outlined text-base text-sage">check_circle</span></div>
+              <div class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-base text-olive">graphic_eq</span>SakhiVoice answers<span class="ml-auto material-symbols-outlined text-base text-sage">check_circle</span></div>
+            </div>
+            <div class="mt-7 rounded-sm bg-ivory p-4 ring-1 ring-sand-line">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="sync-label text-stone-warm">Synced just now</span>
+                <span class="sync-pct font-bold text-terracotta">100%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-sand-line overflow-hidden"><div class="sync-bar h-full rounded-full bg-terracotta transition-all duration-300" style="width:100%"></div></div>
+            </div>
+          </div>
+          <div class="flex justify-center lg:justify-start gap-3 mt-6" id="net-controls">
+            <button data-net="offline" class="text-xs font-semibold px-4 py-2 rounded-full ring-1 ring-sand-line text-ink/70">Try offline</button>
+            <button data-net="online" class="text-xs font-semibold px-4 py-2 rounded-full ring-1 ring-sand-line text-ink/70">Restore signal</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- FEATURE 06 — Mother + Baby -->
+      <article class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="order-2 lg:order-1 reveal lg-tilt" style="--d:150ms">
+          <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_30px_80px_-30px_rgba(37,35,33,0.3)] p-7 max-w-md mx-auto lg:mx-0" id="mock-family">
+            <p class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60 mb-6">Two journeys, one thread</p>
+            <div class="relative pl-6">
+              <div class="absolute left-[7px] top-2 bottom-2 w-px bg-rose/40"></div>
+              <div class="space-y-5">
+                <div class="relative">
+                  <span class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-rose"></span>
+                  <p class="text-xs tracking-widest2 uppercase text-rose font-semibold">Meena · Recovery</p>
+                  <p class="text-sm mt-0.5">Day 14 · Gentle Awakening Stage</p>
+                </div>
+                <div class="relative">
+                  <span class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-saffron"></span>
+                  <p class="text-xs tracking-widest2 uppercase text-saffron font-semibold">Baby · Week 2</p>
+                  <p class="text-sm mt-0.5">Feeding rhythm established · weight check 18 Oct</p>
+                </div>
+                <div class="relative">
+                  <span class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-olive"></span>
+                  <p class="text-xs tracking-widest2 uppercase text-olive font-semibold">Together · Follow-up</p>
+                  <p class="text-sm mt-0.5">Joint visit 15 Oct · City Maternity, Suite 3B</p>
+                </div>
+                <div class="relative">
+                  <span class="absolute -left-6 top-1 w-3 h-3 rounded-full bg-terracotta"></span>
+                  <p class="text-xs tracking-widest2 uppercase text-terracotta font-semibold">Next · Continued care</p>
+                  <p class="text-sm mt-0.5">Six-week postpartum review scheduled</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta">Feature 06</p>
+          <h3 class="reveal font-serif text-display-md mt-3">Mother + Baby</h3>
+          <p class="reveal mt-2 font-serif italic text-xl text-olive">“One connected family journey.”</p>
+          <p class="reveal mt-4 text-ink/65 max-w-md font-light">Recovery and the baby’s first weeks live on one thread — because at 3 AM, you check one app, not three.</p>
+          <ul class="reveal mt-6 space-y-2.5 text-sm text-ink/70">
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Postpartum recovery and newborn milestones side by side</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Joint visits and shared follow-ups in one view</li>
+            <li class="flex gap-2.5"><span class="material-symbols-outlined text-base text-terracotta">check_circle</span>Caregiver tasks tied to both journeys</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div></section>
+
+<!-- ══ SECTION 5: SAKHIVOICE ═══════════════════════ -->
+<section id="sakhi" class="relative py-28 lg:py-40 bg-olive text-ivory grain overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(80%_60%_at_80%_20%,rgba(216,164,154,0.18),transparent_60%)]"></div>
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12 relative">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-rose">SakhiVoice</p>
+        <h2 class="reveal font-serif text-display-lg mt-4">Care should speak <span class="serif-italic text-rose">your language.</span></h2>
+        <p class="reveal mt-6 text-lg leading-relaxed text-ivory/70 max-w-xl font-light">“Sakhi” — a trusted friend. Ask in your words; get your care plan back in plain, warm language. Voice-first, so understanding never depends on reading.</p>
+        <div class="reveal mt-8 flex flex-wrap items-center gap-3">
+          <span class="lang-pill px-5 py-2.5 rounded-full ring-1 ring-ivory/25 text-sm">English</span>
+          <span class="lang-pill px-5 py-2.5 rounded-full ring-1 ring-ivory/25 text-sm">தமிழ்</span>
+          <span class="lang-pill px-5 py-2.5 rounded-full ring-1 ring-ivory/25 text-sm">हिन्दी</span>
+        </div>
+        <p class="reveal mt-8 text-xs text-ivory/45 max-w-md">Every spoken answer is drawn from clinician-approved content. SakhiVoice simplifies language — it never changes the care.</p>
+      </div>
+      <div class="reveal" style="--d:150ms">
+        <div class="rounded-sm bg-[#2E352C] ring-1 ring-ivory/10 shadow-[0_40px_90px_-30px_rgba(0,0,0,0.5)] p-7 lg:p-9">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-10 rounded-full bg-rose/20 flex items-center justify-center"><span class="material-symbols-outlined text-rose">mic</span></span>
+            <div>
+              <p class="text-sm font-semibold">Listening…</p>
+              <p class="text-xs text-ivory/45">“What is my next appointment?”</p>
+            </div>
+          </div>
+          <div class="flex items-end gap-1.5 h-14">
+            <span class="flex-1 rounded-full bg-rose/80 wave-bar" style="height:35%"></span>
+            <span class="flex-1 rounded-full bg-rose/60 wave-bar" style="height:60%"></span>
+            <span class="flex-1 rounded-full bg-terracotta/80 wave-bar" style="height:45%"></span>
+            <span class="flex-1 rounded-full bg-rose/70 wave-bar" style="height:80%"></span>
+            <span class="flex-1 rounded-full bg-rose/50 wave-bar" style="height:30%"></span>
+            <span class="flex-1 rounded-full bg-terracotta/70 wave-bar" style="height:65%"></span>
+            <span class="flex-1 rounded-full bg-rose/60 wave-bar" style="height:50%"></span>
+            <span class="flex-1 rounded-full bg-rose/40 wave-bar" style="height:75%"></span>
+            <span class="flex-1 rounded-full bg-terracotta/60 wave-bar" style="height:40%"></span>
+            <span class="flex-1 rounded-full bg-rose/50 wave-bar" style="height:55%"></span>
+            <span class="flex-1 rounded-full bg-rose/30 wave-bar" style="height:28%"></span>
+            <span class="flex-1 rounded-full bg-terracotta/50 wave-bar" style="height:70%"></span>
+          </div>
+          <div class="mt-6 rounded-sm bg-ivory p-5 text-ink">
+            <p class="text-[11px] tracking-widest2 uppercase text-terracotta font-semibold mb-1.5">Sakhi answers</p>
+            <p class="text-lg font-serif">“15 October · City Maternity Hospital”</p>
+            <p class="text-sm text-ink/60 mt-1">11:30 in the morning · Pooja is driving you. Bring your discharge summary.</p>
+          </div>
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <div class="rounded-sm bg-ivory/5 ring-1 ring-ivory/10 p-3 text-center">
+              <p class="text-[10px] tracking-widest2 uppercase text-rose font-semibold">English</p>
+            </div>
+            <div class="rounded-sm bg-ivory/5 ring-1 ring-ivory/10 p-3 text-center">
+              <p class="text-[10px] tracking-widest2 uppercase text-rose font-semibold">தமிழ்</p>
+            </div>
+            <div class="rounded-sm bg-ivory/5 ring-1 ring-ivory/10 p-3 text-center">
+              <p class="text-[10px] tracking-widest2 uppercase text-rose font-semibold">हिन्दी</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 6: CAREBRIDGE ═══════════════════════ -->
+<section id="carebridge" class="relative py-28 lg:py-40 grain overflow-hidden">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="max-w-3xl">
+      <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta mb-6">Referral continuity</p>
+      <h2 class="reveal font-serif text-display-lg">Care shouldn’t break <span class="serif-italic text-terracotta">at the referral.</span></h2>
+      <p class="reveal mt-6 text-lg leading-relaxed text-ink/65 max-w-2xl font-light">Most stories get lost in the handover. NurtureLoop carries yours — plan, documents, questions — so the next room already knows.</p>
+    </div>
+    <div class="mt-16 lg:mt-20 relative">
+      <svg class="absolute left-0 right-0 top-[26px] hidden lg:block w-full h-2 text-sand-line" viewBox="0 0 1000 2" preserveAspectRatio="none" fill="none">
+        <path d="M0 1 H 1000" stroke="currentColor" stroke-width="2" stroke-dasharray="1 9" stroke-linecap="round"/>
+      </svg>
+      <div class="grid lg:grid-cols-5 gap-8 lg:gap-6 relative">
+        <div class="reveal">
+          <span class="w-[54px] h-[54px] rounded-full bg-terracotta text-warm-white flex items-center justify-center ring-8 ring-ivory"><span class="material-symbols-outlined">local_hospital</span></span>
+          <h3 class="font-serif text-2xl mt-4">Community clinic</h3>
+          <p class="text-sm text-ink/60 mt-1.5">Where your story begins — notes and plan recorded.</p>
+        </div>
+        <div class="reveal" style="--d:120ms">
+          <span class="w-[54px] h-[54px] rounded-full bg-saffron text-warm-white flex items-center justify-center ring-8 ring-ivory"><span class="material-symbols-outlined">forward_to_inbox</span></span>
+          <h3 class="font-serif text-2xl mt-4">Referral</h3>
+          <p class="text-sm text-ink/60 mt-1.5">CareBridge packages the journey — with your consent.</p>
+        </div>
+        <div class="reveal" style="--d:240ms">
+          <span class="w-[54px] h-[54px] rounded-full bg-rose text-warm-white flex items-center justify-center ring-8 ring-ivory"><span class="material-symbols-outlined">apartment</span></span>
+          <h3 class="font-serif text-2xl mt-4">Hospital</h3>
+          <p class="text-sm text-ink/60 mt-1.5">The new team opens a file that’s already full.</p>
+        </div>
+        <div class="reveal" style="--d:360ms">
+          <span class="w-[54px] h-[54px] rounded-full bg-olive text-warm-white flex items-center justify-center ring-8 ring-ivory"><span class="material-symbols-outlined">event_available</span></span>
+          <h3 class="font-serif text-2xl mt-4">Appointment</h3>
+          <p class="text-sm text-ink/60 mt-1.5">Date, place and preparation in your language.</p>
+        </div>
+        <div class="reveal" style="--d:480ms">
+          <span class="w-[54px] h-[54px] rounded-full bg-ink text-ivory flex items-center justify-center ring-8 ring-ivory"><span class="material-symbols-outlined">all_inclusive</span></span>
+          <h3 class="font-serif text-2xl mt-4">Follow-up</h3>
+          <p class="text-sm text-ink/60 mt-1.5">The loop closes — and the next one opens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 7: CARECIRCLE ═══════════════════════ -->
+<section id="carecircle" class="relative py-28 lg:py-40 bg-ink text-ivory grain overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(70%_55%_at_50%_45%,rgba(201,111,82,0.16),transparent_65%)]"></div>
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12 relative">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-rose">CareCircle</p>
+      <h2 class="reveal font-serif text-display-lg mt-4">Support, <span class="serif-italic text-rose">on your terms.</span></h2>
+      <p class="reveal mt-5 text-ivory/60 font-light">You decide who stands where. Each person sees only what you allow.</p>
+    </div>
+    <div class="mt-16 lg:mt-24 flex justify-center">
+      <div class="orbit-wrap relative w-fit py-24 px-6 sm:px-32">
+        <svg class="orbit-ring absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] h-[340px] sm:w-[420px] sm:h-[420px] text-sage/50 pointer-events-none" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="86" stroke="currentColor" stroke-width="1" stroke-dasharray="3 8" class="animate-dash-flow-slow"/>
+          <circle cx="100" cy="100" r="58" stroke="currentColor" stroke-width="1" stroke-dasharray="2 7" opacity="0.6"/>
+        </svg>
+        <div class="orbit-center relative w-40 h-40 sm:w-44 sm:h-44 rounded-full bg-terracotta flex flex-col items-center justify-center text-warm-white shadow-[0_30px_60px_-20px_rgba(201,111,82,0.6)] reveal">
+          <span class="material-symbols-outlined text-3xl">pregnant_woman</span>
+          <p class="font-serif text-xl mt-1">Meena</p>
+          <p class="text-[10px] tracking-widest2 uppercase opacity-70">In control</p>
+        </div>
+        <div class="orbit-card absolute -top-2 left-1/2 -translate-x-1/2 reveal" style="--d:120ms">
+          <div class="rounded-sm bg-[#33302C] ring-1 ring-ivory/10 px-4 py-3 text-center w-44">
+            <p class="text-xs font-semibold text-ivory">Partner · Rahul</p>
+            <p class="text-[10px] text-sage mt-1">✓ Appointments ✓ Location</p>
+            <p class="text-[10px] text-ivory/35">✕ Private medical information</p>
+          </div>
+        </div>
+        <div class="orbit-card absolute left-0 sm:-left-6 top-[46%] -translate-y-1/2 reveal" style="--d:240ms">
+          <div class="rounded-sm bg-[#33302C] ring-1 ring-ivory/10 px-4 py-3 text-center w-44">
+            <p class="text-xs font-semibold text-ivory">Sister · Pooja</p>
+            <p class="text-[10px] text-sage mt-1">✓ Appointments ✓ Transport</p>
+            <p class="text-[10px] text-ivory/35">✕ Private notes</p>
+          </div>
+        </div>
+        <div class="orbit-card absolute right-0 sm:-right-6 top-[46%] -translate-y-1/2 reveal" style="--d:360ms">
+          <div class="rounded-sm bg-[#33302C] ring-1 ring-ivory/10 px-4 py-3 text-center w-44">
+            <p class="text-xs font-semibold text-ivory">Mother</p>
+            <p class="text-[10px] text-sage mt-1">✓ Visits ✓ Baby updates</p>
+            <p class="text-[10px] text-ivory/35">✕ Records</p>
+          </div>
+        </div>
+        <div class="orbit-card absolute -bottom-2 left-1/2 -translate-x-1/2 reveal" style="--d:480ms">
+          <div class="rounded-sm bg-terracotta px-4 py-3 text-center w-48">
+            <p class="text-xs font-semibold text-warm-white">Care team</p>
+            <p class="text-[10px] text-ivory/80 mt-1">✓ Full record · ✓ Questions</p>
+            <p class="text-[10px] text-ivory/55">Only your clinicians</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 8: OFFLINE / JANANICONNECT ═══════════ -->
+<section id="janani" class="relative py-28 lg:py-40 grain overflow-hidden bg-[#EFE8DA]">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+      <div>
+        <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta mb-6">JananiConnect</p>
+        <h2 class="reveal font-serif text-display-lg">Care shouldn’t disappear <span class="serif-italic text-terracotta">when the signal does.</span></h2>
+        <p class="reveal mt-6 text-lg leading-relaxed text-ink/65 max-w-xl font-light">Networks flicker. Journeys shouldn’t. NurtureLoop keeps your care readable offline and syncs quietly when you’re back.</p>
+        <div class="reveal mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <button data-net="offline" class="text-sm font-semibold px-6 py-3 rounded-full bg-ink text-ivory hover:bg-terracotta-deep transition-colors">Cut the signal</button>
+          <button data-net="online" class="text-sm font-semibold px-6 py-3 rounded-full ring-1 ring-ink/20 hover:ring-terracotta hover:text-terracotta-deep transition-colors">Restore it</button>
+        </div>
+        <ol class="reveal mt-8 space-y-2 text-sm text-ink/60 list-decimal list-inside max-w-md">
+          <li>Online — everything fresh</li>
+          <li>Offline — saved journey stays readable</li>
+          <li>Restored — changes sync automatically</li>
+        </ol>
+      </div>
+      <div class="reveal" style="--d:150ms">
+        <div class="rounded-sm bg-warm-white ring-1 ring-sand-line shadow-[0_40px_90px_-30px_rgba(37,35,33,0.35)] overflow-hidden max-w-md ml-auto">
+          <div class="flex items-center justify-between px-5 py-3.5 border-b border-sand-line">
+            <span class="text-[11px] tracking-widest2 uppercase font-semibold text-ink/60">Your journey</span>
+            <span class="net-badge text-[10px] font-bold tracking-widest2 uppercase px-3 py-1 rounded-full bg-sage/15 text-olive ring-1 ring-sage/40">Online</span>
+          </div>
+          <div class="p-5">
+            <div class="flex items-center gap-2 text-sm font-medium"><span class="material-symbols-outlined text-terracotta text-lg">auto_stories</span>Today · Postpartum follow-up</div>
+            <p class="text-xs text-stone-warm mt-1 ml-7">City Maternity · 11:30 AM · Suite 3B</p>
+            <div class="mt-4 h-px bg-sand-line"></div>
+            <div class="mt-4 space-y-3 text-sm">
+              <div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-base text-olive">description</span>Discharge summary<span class="ml-auto material-symbols-outlined text-base text-sage">offline_pin</span></div>
+              <div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-base text-olive">graphic_eq</span>Answers in தமிழ்<span class="ml-auto material-symbols-outlined text-base text-sage">offline_pin</span></div>
+              <div class="flex items-center gap-2.5"><span class="material-symbols-outlined text-base text-olive">event</span>Physiotherapy referral<span class="ml-auto material-symbols-outlined text-base text-sage">offline_pin</span></div>
+            </div>
+            <div class="mt-6 rounded-sm bg-ivory p-4 ring-1 ring-sand-line">
+              <div class="flex items-center justify-between text-xs mb-2">
+                <span class="sync-label text-stone-warm">Synced just now</span>
+                <span class="sync-pct font-bold text-terracotta">100%</span>
+              </div>
+              <div class="h-1.5 rounded-full bg-sand-line overflow-hidden"><div class="sync-bar h-full rounded-full bg-terracotta transition-all duration-300" style="width:100%"></div></div>
+              <p id="net-note" class="net-note class="text-[11px] text-stone-warm mt-3">Everything is up to date.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 9: SAFETY ═══════════════════════ -->
+<section id="safety" class="relative py-28 lg:py-40 bg-warm-white grain overflow-hidden">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="max-w-3xl">
+      <p class="reveal text-[11px] tracking-widest2 uppercase font-semibold text-terracotta mb-6">Safety</p>
+      <h2 class="reveal font-serif text-display-lg">AI that assists. <span class="serif-italic text-olive">Humans who decide.</span></h2>
+      <p class="reveal mt-6 text-lg leading-relaxed text-ink/65 max-w-2xl font-light">NurtureLoop sits beside your care team, not above it. Every answer begins with clinician-approved information — technology only makes it easier to understand.</p>
+    </div>
+    <div class="mt-16 lg:mt-20 rounded-sm bg-ivory ring-1 ring-sand-line p-8 lg:p-12 reveal">
+      <div class="grid lg:grid-cols-7 gap-6 items-center">
+        <div class="text-center">
+          <span class="mx-auto w-14 h-14 rounded-full bg-olive text-warm-white flex items-center justify-center"><span class="material-symbols-outlined">medical_services</span></span>
+          <h3 class="font-serif text-xl mt-3">Clinician</h3>
+          <p class="text-xs text-ink/55 mt-1">Creates the care plan</p>
+        </div>
+        <span class="hidden lg:block material-symbols-outlined text-terracotta text-2xl justify-self-center">east</span>
+        <div class="text-center">
+          <span class="mx-auto w-14 h-14 rounded-full bg-terracotta text-warm-white flex items-center justify-center"><span class="material-symbols-outlined">verified_user</span></span>
+          <h3 class="font-serif text-xl mt-3">Approved information</h3>
+          <p class="text-xs text-ink/55 mt-1">Reviewed care content</p>
+        </div>
+        <span class="hidden lg:block material-symbols-outlined text-terracotta text-2xl justify-self-center">east</span>
+        <div class="text-center">
+          <span class="mx-auto w-14 h-14 rounded-full bg-ink text-ivory flex items-center justify-center"><span class="material-symbols-outlined">all_inclusive</span></span>
+          <h3 class="font-serif text-xl mt-3">NurtureLoop</h3>
+          <p class="text-xs text-ink/55 mt-1">Simplify · translate · speak</p>
+        </div>
+        <span class="hidden lg:block material-symbols-outlined text-terracotta text-2xl justify-self-center">east</span>
+        <div class="text-center">
+          <span class="mx-auto w-14 h-14 rounded-full bg-rose text-warm-white flex items-center justify-center"><span class="material-symbols-outlined">diversity_1</span></span>
+          <h3 class="font-serif text-xl mt-3">You &amp; care team</h3>
+          <p class="text-xs text-ink/55 mt-1">Decisions stay human</p>
+        </div>
+      </div>
+      <div class="mt-10 pt-8 border-t border-sand-line grid sm:grid-cols-3 gap-6">
+        <div class="flex items-start gap-3"><span class="material-symbols-outlined text-olive mt-0.5">block</span><p class="text-sm text-ink/70"><strong class="text-ink">Does not diagnose.</strong> NurtureLoop never assesses symptoms or conditions.</p></div>
+        <div class="flex items-start gap-3"><span class="material-symbols-outlined text-olive mt-0.5">block</span><p class="text-sm text-ink/70"><strong class="text-ink">Does not recommend treatment.</strong> Only your clinicians decide care.</p></div>
+        <div class="flex items-start gap-3"><span class="material-symbols-outlined text-olive mt-0.5">block</span><p class="text-sm text-ink/70"><strong class="text-ink">Does not replace professionals.</strong> It connects and clarifies — always.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SECTION 10: FINAL CTA ═══════════════════════ -->
+<section id="care-teams" class="relative py-32 lg:py-44 bg-ink text-ivory grain overflow-hidden">
+  <div class="absolute inset-0 bg-[radial-gradient(75%_60%_at_50%_100%,rgba(201,111,82,0.2),transparent_60%)]"></div>
+  <svg class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(90vw,720px)] h-auto text-terracotta/30 pointer-events-none" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <path id="cta-loop" d="M200 60 C 300 60, 320 140, 320 200 C 320 260, 300 340, 200 340 C 100 340, 80 260, 80 200 C 80 140, 100 60, 200 60" stroke="currentColor" stroke-width="2" stroke-dasharray="1005" stroke-dashoffset="1005"/>
+  </svg>
+  <div class="relative max-w-3xl mx-auto text-center px-5">
+    <h2 class="reveal font-serif text-display-lg">Keep care <span class="serif-italic text-rose">moving.</span></h2>
+    <p class="reveal mt-6 text-lg leading-relaxed text-ivory/65 font-light max-w-xl mx-auto">From the first instruction to the next visit, NurtureLoop keeps the journey connected.</p>
+    <div class="reveal mt-10 flex flex-col sm:flex-row justify-center gap-4">
+      <a href="app.html" data-enter class="magnetic inline-flex items-center justify-center gap-2.5 rounded-full bg-terracotta text-warm-white px-9 py-4 font-semibold shadow-[0_12px_32px_-10px_rgba(201,111,82,0.55)] hover:bg-terracotta-deep hover:-translate-y-0.5 transition-all duration-300">Enter NurtureLoop</a>
+      <a href="#journey" class="magnetic inline-flex items-center justify-center gap-2 rounded-full ring-1 ring-ivory/25 px-9 py-4 font-medium hover:ring-rose hover:text-rose transition-colors duration-300">Explore the journey</a>
+    </div>
+    <p class="reveal mt-12 text-[11px] tracking-widest2 uppercase text-ivory/40">Assistive, not diagnostic</p>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════ -->
+<footer id="footer" class="relative bg-ink text-ivory/60 pt-16 pb-10 overflow-hidden">
+  <div class="max-w-8xl mx-auto px-5 sm:px-8 lg:px-12">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <svg width="26" height="26" viewBox="0 0 30 30" fill="none" class="text-terracotta">
+            <path d="M15 3.5a11.5 11.5 0 1 0 11.5 11.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <circle cx="15" cy="15" r="4.2" stroke="currentColor" stroke-width="2"/>
+            <circle cx="24.4" cy="7.2" r="2.6" fill="currentColor"/>
+          </svg>
+          <span class="font-serif text-xl text-ivory">NurtureLoop</span>
+        </div>
+        <p class="serif-italic text-lg text-ivory/70 mt-3">“From clinical instructions to completed care.”</p>
+        <p class="text-xs mt-4 flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-sage"></span>Assistive, not diagnostic.</p>
+      </div>
+      <nav class="grid grid-cols-2 sm:grid-cols-3 gap-x-12 gap-y-3 text-sm">
+        <a href="#product" class="hover:text-ivory transition-colors">Product</a>
+        <a href="#journey" class="hover:text-ivory transition-colors">How it works</a>
+        <a href="#safety" class="hover:text-ivory transition-colors">Safety</a>
+        <a href="#carecircle" class="hover:text-ivory transition-colors">Privacy</a>
+        <a href="#care-teams" class="hover:text-ivory transition-colors">Care teams</a>
+        <a href="#footer" class="hover:text-ivory transition-colors">Contact</a>
+      </nav>
+    </div>
+    <div class="mt-14 pt-6 border-t border-ivory/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-ivory/35">
+      <span>© 2026 NurtureLoop · A patient-controlled maternal care continuity companion</span>
+      <span>Warm ivory · Terracotta · Deep olive</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var d = document;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* ── Reveal on scroll ── */
+  var revealEls = Array.prototype.slice.call(d.querySelectorAll('.reveal'));
+  var ioAlive = false;
+  function revealAll() { revealEls.forEach(function (el) { el.classList.add('is-visible'); }); }
+  if (reduced || !('IntersectionObserver' in window)) {
+    revealAll();
+  } else {
+    var ro = new IntersectionObserver(function (entries) {
+      ioAlive = true;
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); ro.unobserve(e.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+    revealEls.forEach(function (el) { ro.observe(el); });
+    /* Safety net: if the observer never reports (odd embedders, paused
+       compositors), show everything rather than leaving the page blank. */
+    setTimeout(function () { if (!ioAlive) revealAll(); }, 1600);
+  }
+
+  /* ── Nav solid on scroll ── */
+  var nav = d.getElementById('landing-nav');
+  function onNavScroll() {
+    if (window.scrollY > 40) nav.classList.add('is-solid');
+    else nav.classList.remove('is-solid');
+  }
+  window.addEventListener('scroll', onNavScroll, { passive: true });
+  onNavScroll();
+
+  /* ── Journey progress line ── */
+  var track = d.getElementById('journey-track');
+  var progress = d.getElementById('journey-progress');
+  var stageDots = d.querySelectorAll('.journey-stage .node-dot');
+  function updateJourney() {
+    if (!track || !progress) return;
+    var r = track.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var passed = Math.min(Math.max(vh * 0.6 - r.top, 0), r.height);
+    progress.style.height = (passed / r.height * 100) + '%';
+    stageDots.forEach(function (dot) {
+      var dr = dot.getBoundingClientRect();
+      dot.classList.toggle('is-lit', dr.top + dr.height / 2 < vh * 0.6);
+    });
+  }
+  window.addEventListener('scroll', updateJourney, { passive: true });
+  window.addEventListener('resize', updateJourney);
+  updateJourney();
+
+  /* ── Fragment → connected ── */
+  var fragStage = d.getElementById('fragment-stage');
+  if (fragStage && !reduced) {
+    var fo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { fragStage.classList.add('is-connected'); fo.disconnect(); }
+      });
+    }, { threshold: 0.45 });
+    fo.observe(fragStage);
+  }
+
+  /* ── CareBridge auto-play ── */
+  var bridgeSteps = d.querySelectorAll('#mock-bridge .bridge-step');
+  var bridgeTimer = null;
+  function renderBridge(stepIdx) {
+    bridgeSteps.forEach(function (s, i) {
+      var node = s.querySelector('.bridge-node');
+      var label = s.querySelector('.bridge-label');
+      if (!node) return;
+      if (i < stepIdx) {
+        s.dataset.state = 'done';
+        node.className = 'bridge-node w-9 h-9 rounded-full bg-sage flex items-center justify-center shrink-0';
+        node.innerHTML = '<span class="material-symbols-outlined text-warm-white text-base">check</span>';
+        if (label) { label.textContent = 'Done'; label.className = 'ml-auto text-[10px] tracking-widest2 uppercase text-stone-warm bridge-label'; }
+      } else if (i === stepIdx) {
+        s.dataset.state = 'active';
+        node.className = 'bridge-node w-9 h-9 rounded-full bg-terracotta flex items-center justify-center shrink-0 relative';
+        node.innerHTML = '<span class="absolute inset-0 rounded-full ring-2 ring-terracotta animate-ring-pulse"></span><span class="w-2 h-2 rounded-full bg-warm-white"></span>';
+        if (label) { label.textContent = 'In progress'; label.className = 'ml-auto text-[10px] tracking-widest2 uppercase text-terracotta bridge-label'; }
+      } else {
+        s.dataset.state = 'pending';
+        node.className = 'bridge-node w-9 h-9 rounded-full bg-ivory ring-1 ring-sand-line shrink-0';
+        node.innerHTML = '';
+        if (label) { label.textContent = 'Up next'; label.className = 'ml-auto text-[10px] tracking-widest2 uppercase text-stone-warm/70 bridge-label'; }
+      }
+    });
+  }
+  function playBridge() {
+    if (bridgeTimer || reduced || !bridgeSteps.length) return;
+    var idx = 1;
+    renderBridge(0);
+    bridgeTimer = setInterval(function () {
+      renderBridge(idx);
+      idx++;
+      if (idx > bridgeSteps.length) { clearInterval(bridgeTimer); bridgeTimer = null; }
+    }, 1400);
+  }
+  var bc = d.getElementById('bridge-controls');
+  if (bc) {
+    bc.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button[data-bridge]');
+      if (!b) return;
+      if (bridgeTimer) { clearInterval(bridgeTimer); bridgeTimer = null; }
+      if (b.dataset.bridge === '1') { renderBridge(0); playBridge(); }
+      else { renderBridge(bridgeSteps.length); }
+    });
+  }
+  var mockBridge = d.getElementById('mock-bridge');
+  if (mockBridge) {
+    var bio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { playBridge(); bio.disconnect(); } });
+    }, { threshold: 0.5 });
+    bio.observe(mockBridge);
+  }
+
+  /* ── SakhiVoice language switch (feature mockup) ── */
+  var voiceLangs = d.getElementById('voice-langs');
+  var voiceQ = d.getElementById('voice-q');
+  var voiceA = d.getElementById('voice-a');
+  var voiceStatus = d.getElementById('voice-status');
+  var voiceCopy = {
+    English: { q: '“What is my next appointment?”', a: '“15 October · City Maternity Hospital, 11:30 in the morning. Pooja is driving you.”', s: 'Speaking in English · calm pace' },
+    ta: { q: '“என் அடுத்த சந்திப்பு எப்போது?”', a: '“அக்டோபர் 15 · சிட்டி மெட்டர்னிட்டி மருத்துவமனை, காலை 11:30. பூஜா உங்களை அழைத்துச் செல்கிறார்.”', s: 'தமிழில் பேசுகிறேன் · மெதுவான வேகம்' },
+    hi: { q: '“मेरी अगली अपॉइंटमेंट कब है?”', a: '“15 अक्टूबर · सिटी मैटर्निटी हॉस्पिटल, सुबह 11:30। पूजा आपको ले जाएँगी।”', s: 'हिन्दी में बोल रही हूँ · धीमी गति' }
+  };
+  if (voiceLangs) {
+    voiceLangs.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button[data-lang]');
+      if (!b) return;
+      voiceLangs.querySelectorAll('button').forEach(function (x) {
+        x.className = 'px-3 py-1 rounded-full ring-1 ring-ivory/20 text-ivory/70';
+      });
+      b.className = 'px-3 py-1 rounded-full bg-terracotta text-warm-white font-semibold';
+      var c = voiceCopy[b.dataset.lang];
+      if (c) { voiceQ.textContent = c.q; voiceA.textContent = c.a; voiceStatus.textContent = c.s; }
+    });
+  }
+
+  /* ── Offline / online demo ── */
+  /* Two places on the page show connection state, so drive them by class. */
+  var netBadges = Array.prototype.slice.call(d.querySelectorAll('.net-badge'));
+  var syncLabels = Array.prototype.slice.call(d.querySelectorAll('.sync-label'));
+  var syncPcts = Array.prototype.slice.call(d.querySelectorAll('.sync-pct'));
+  var syncBars = Array.prototype.slice.call(d.querySelectorAll('.sync-bar'));
+  var netNotes = Array.prototype.slice.call(d.querySelectorAll('.net-note'));
+  var netTimer = null;
+  function L(s, keepLower) {
+    var v = window.NL && window.NL.t ? window.NL.t(s) : s;
+    if (keepLower && window.NL && window.NL.lang && window.NL.lang() === 'en') {
+      return v.charAt(0).toLowerCase() + v.slice(1);
+    }
+    return v;
+  }
+  function setAll(list, fn) { list.forEach(fn); }
+  function setNetState(state) {
+    if (!netBadges.length) return;
+    if (netTimer) { clearInterval(netTimer); netTimer = null; }
+    var off = state === 'offline';
+    setAll(netBadges, function (el) {
+      el.textContent = L(off ? 'offline' : 'online');
+      el.className = 'net-badge text-[10px] font-bold tracking-widest2 uppercase px-3 py-1 rounded-full ' +
+        (off ? 'bg-ink/10 text-ink/60 ring-1 ring-ink/15' : 'bg-sage/15 text-olive ring-1 ring-sage/40');
+    });
+    if (off) {
+      setAll(syncLabels, function (el) { el.textContent = L('offline') + ' · ' + L('saved care journey', true); });
+      setAll(syncPcts, function (el) { el.textContent = '—'; });
+      setAll(syncBars, function (el) { el.style.width = '0%'; });
+      setAll(netNotes, function (el) { el.textContent = L('signal lost — your saved journey stays readable.'); });
+      return;
+    }
+    setAll(syncLabels, function (el) { el.textContent = L('syncing') + '…'; });
+    setAll(syncPcts, function (el) { el.textContent = '0%'; });
+    setAll(syncBars, function (el) { el.style.width = '0%'; });
+    setAll(netNotes, function (el) { el.textContent = L('back online — restoring changes…'); });
+    var p = 0;
+    netTimer = setInterval(function () {
+      p += 10 + Math.random() * 18;
+      if (p >= 100) {
+        p = 100; clearInterval(netTimer); netTimer = null;
+        setAll(syncLabels, function (el) { el.textContent = L('synced just now'); });
+        setAll(netNotes, function (el) { el.textContent = L('everything is up to date.'); });
+      }
+      setAll(syncPcts, function (el) { el.textContent = Math.round(p) + '%'; });
+      setAll(syncBars, function (el) { el.style.width = p + '%'; });
+    }, 260);
+  }
+  /* Let the shared runtime drive this demo: one connection state everywhere. */
+  window.__nlOnNet = function (isOnline) { setNetState(isOnline ? 'online' : 'offline'); };
+  if (netBadges.length) {
+    d.querySelectorAll('[data-net]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var next = btn.dataset.net === 'online';
+        if (window.NL && window.NL.setOnline) window.NL.setOnline(next);
+        else setNetState(btn.dataset.net);
+      });
+    });
+    if (window.NL && window.NL.connection && !window.NL.connection()) setNetState('offline');
+  }
+
+  /* ── CTA loop draw-in ── */
+  var ctaLoop = d.getElementById('cta-loop');
+  if (ctaLoop) {
+    if (reduced) { ctaLoop.style.strokeDashoffset = '0'; }
+    else {
+      var clo = new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) {
+            ctaLoop.style.transition = 'stroke-dashoffset 3.2s cubic-bezier(.3,.7,.2,1)';
+            ctaLoop.style.strokeDashoffset = '0';
+            clo.disconnect();
+          }
+        });
+      }, { threshold: 0.4 });
+      clo.observe(ctaLoop);
+    }
+  }
+
+  /* ── Hero dot field canvas ── */
+  var canvas = d.getElementById('dotfield');
+  if (canvas && !reduced) {
+    var ctx = canvas.getContext('2d');
+    var W = 0, H = 0, dots = [];
+    var isSmall = false;
+    var dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 640 ? 1.5 : 2);
+    var mouse = { x: -9999, y: -9999 };
+    var dotColors = ['rgba(201,111,82,', 'rgba(83,96,82,', 'rgba(216,164,154,', 'rgba(217,154,66,'];
+    function resize() {
+      W = canvas.offsetWidth; H = canvas.offsetHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      /* Phones get a lighter field: fewer dots, no linking pass cost worry. */
+      isSmall = Math.min(W, H) < 480;
+      var count = Math.min(isSmall ? 42 : 100, Math.floor(W * H / (isSmall ? 9000 : 18000)));
+      dots = [];
+      for (var i = 0; i < count; i++) {
+        dots.push({
+          x: Math.random() * W, y: Math.random() * H,
+          vx: (Math.random() - 0.5) * 0.12, vy: (Math.random() - 0.5) * 0.12,
+          r: Math.random() * 1.6 + 0.6,
+          c: dotColors[Math.floor(Math.random() * dotColors.length)],
+          a: Math.random() * 0.25 + 0.12,
+          depth: Math.random() * 0.7 + 0.3
+        });
+      }
+    }
+    window.addEventListener('resize', resize);
+    resize();
+    var heroSec = d.getElementById('top');
+    heroSec.addEventListener('mousemove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top;
+    }, { passive: true });
+    heroSec.addEventListener('mouseleave', function () { mouse.x = -9999; mouse.y = -9999; });
+    var frame = 0;
+    var running = false;
+    var heroOn = true;
+    function start() {
+      if (running || reduced || d.hidden || !heroOn) return;
+      running = true;
+      requestAnimationFrame(tick);
+    }
+    function tick() {
+      if (!heroOn || d.hidden) { running = false; return; }
+      frame++;
+      if (frame % 3 === 0) {
+        ctx.clearRect(0, 0, W, H);
+        for (var i = 0; i < dots.length; i++) {
+          var p = dots[i];
+          p.x += p.vx; p.y += p.vy;
+          var dx = p.x - mouse.x, dy = p.y - mouse.y;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120 && dist > 0.001) {
+            var f = (120 - dist) / 120 * 0.35 * p.depth;
+            p.x += dx / dist * f; p.y += dy / dist * f;
+          }
+          if (p.x < -10) p.x = W + 10; if (p.x > W + 10) p.x = -10;
+          if (p.y < -10) p.y = H + 10; if (p.y > H + 10) p.y = -10;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, 6.2832);
+          ctx.fillStyle = p.c + p.a + ')';
+          ctx.fill();
+          /* Connection lines only on larger fields - phones draw dots only. */
+          if (!isSmall) {
+            for (var j = i + 1; j < dots.length; j++) {
+              var q = dots[j];
+              var ddx = p.x - q.x, ddy = p.y - q.y;
+              var dd = ddx * ddx + ddy * ddy;
+              if (dd < 8100) {
+                ctx.strokeStyle = 'rgba(139,133,122,' + ((1 - Math.sqrt(dd) / 90) * 0.06).toFixed(3) + ')';
+                ctx.lineWidth = 0.5;
+                ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+              }
+            }
+          }
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+    /* Pause the whole field when the hero scrolls away or the tab is hidden. */
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        heroOn = es[0].isIntersecting;
+        if (heroOn) start(); else running = false;
+      }, { threshold: 0 }).observe(d.getElementById('top') || canvas);
+    }
+    d.addEventListener('visibilitychange', function () { if (!d.hidden) start(); });
+    start();
+  }
+
+  /* ── Ribbon orbit bead ── */
+  var ribbonPath = d.getElementById('ribbonPath');
+  var bead = d.getElementById('ribbon-bead');
+  var halo = d.getElementById('ribbon-bead-halo');
+  if (ribbonPath && bead && !reduced) {
+    var len = ribbonPath.getTotalLength();
+    var t0 = performance.now();
+    var orbiting = false, orbitOn = true;
+    function orbitStart() {
+      if (orbiting || d.hidden || !orbitOn) return;
+      orbiting = true;
+      requestAnimationFrame(orbit);
+    }
+    function orbit(now) {
+      if (!orbitOn || d.hidden) { orbiting = false; return; }
+      var t = ((now - t0) / 14000) % 1;
+      var pt = ribbonPath.getPointAtLength(t * len);
+      bead.setAttribute('cx', pt.x); bead.setAttribute('cy', pt.y);
+      if (halo) { halo.setAttribute('cx', pt.x); halo.setAttribute('cy', pt.y); }
+      requestAnimationFrame(orbit);
+    }
+    var ribbonSvg = ribbonPath.closest('svg') || ribbonPath;
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        orbitOn = es[0].isIntersecting;
+        if (orbitOn) orbitStart(); else orbiting = false;
+      }, { threshold: 0 }).observe(ribbonSvg);
+    }
+    d.addEventListener('visibilitychange', function () { if (!d.hidden) orbitStart(); });
+    orbitStart();
+  }
+
+  /* ── Compact mobile loop bead ── */
+  var miniBead = d.getElementById('mini-bead');
+  var miniRef = d.getElementById('ribbonPath');
+  if (miniBead && miniRef && !reduced) {
+    var mLen = miniRef.getTotalLength();
+    var mT0 = performance.now();
+    var mRunning = false, mOn = true;
+    function miniStart() {
+      if (mRunning || d.hidden || !mOn) return;
+      mRunning = true;
+      requestAnimationFrame(miniOrbit);
+    }
+    function miniOrbit(now) {
+      if (!mOn || d.hidden) { mRunning = false; return; }
+      /* The mini ring mirrors the big ribbon: same normalized position. */
+      var t = ((now - mT0) / 14000) % 1;
+      var cx = 100, cy = 110, rx = 62, ry = 74;
+      var ang = t * Math.PI * 2 - Math.PI / 2;
+      miniBead.setAttribute('cx', (cx + rx * Math.cos(ang)).toFixed(1));
+      miniBead.setAttribute('cy', (cy + ry * Math.sin(ang)).toFixed(1));
+      requestAnimationFrame(miniOrbit);
+    }
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        mOn = es[0].isIntersecting;
+        if (mOn) miniStart(); else mRunning = false;
+      }, { threshold: 0 }).observe(miniBead.closest('svg'));
+    }
+    d.addEventListener('visibilitychange', function () { if (!d.hidden) miniStart(); });
+    miniStart();
+  }
+
+  /* ── Custom cursor + trail + magnetic ── */
+  if (finePointer && !reduced) {
+    d.documentElement.classList.add('nl-cursor');
+    var dot = d.getElementById('nl-dot');
+    var ring = d.getElementById('nl-ring');
+    var mx = -100, my = -100, rx = -100, ry = -100;
+    var trail = [];
+    for (var ti = 0; ti < 6; ti++) {
+      var td = d.createElement('div');
+      td.className = 'nl-trail-dot';
+      d.body.appendChild(td);
+      trail.push({ el: td, x: mx, y: my });
+    }
+    d.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      dot.style.opacity = '1'; ring.style.opacity = '1';
+    }, { passive: true });
+    d.addEventListener('mouseleave', function () { dot.style.opacity = '0'; ring.style.opacity = '0'; });
+    d.addEventListener('mousedown', function () { ring.classList.add('is-press'); });
+    d.addEventListener('mouseup', function () { ring.classList.remove('is-press'); });
+    d.addEventListener('mouseover', function (e) {
+      var t = e.target.closest('a, button, input, textarea, select, [role="button"]');
+      ring.classList.toggle('is-hover', !!t);
+    }, { passive: true });
+    var magnets = Array.prototype.slice.call(d.querySelectorAll('.magnetic'));
+    var lastMove = 0, cursorRunning = false;
+    function cursorStart() {
+      lastMove = performance.now();
+      if (cursorRunning || reduced || d.hidden) return;
+      cursorRunning = true;
+      requestAnimationFrame(cursorLoop);
+    }
+    function cursorLoop() {
+      /* Park the loop once the pointer settles - restart on the next move. */
+      if (d.hidden || performance.now() - lastMove > 1400) { cursorRunning = false; return; }
+      rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px) translate(-50%,-50%)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px) translate(-50%,-50%)';
+      var px = mx, py = my;
+      for (var k = 0; k < trail.length; k++) {
+        var s = trail[k];
+        s.x += (px - s.x) * (0.3 - k * 0.035);
+        s.y += (py - s.y) * (0.3 - k * 0.035);
+        s.el.style.transform = 'translate(' + s.x + 'px,' + s.y + 'px) translate(-50%,-50%)';
+        s.el.style.opacity = String(0.35 - k * 0.05);
+        px = s.x; py = s.y;
+      }
+      for (var m = 0; m < magnets.length; m++) {
+        var el = magnets[m];
+        var r = el.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var ddx = mx - cx, ddy = my - cy;
+        var dist = Math.hypot(ddx, ddy);
+        var radius = Math.max(r.width, r.height) / 2 + 60;
+        if (dist < radius && dist > 0.001) {
+          var pull = (1 - dist / radius) * 8;
+          el.style.transform = 'translate(' + (ddx / dist * pull).toFixed(1) + 'px,' + (ddy / dist * pull).toFixed(1) + 'px)';
+        } else {
+          el.style.transform = '';
+        }
+      }
+      requestAnimationFrame(cursorLoop);
+    }
+    d.addEventListener('mousemove', cursorStart, { passive: true });
+    cursorStart();
+  }
+
+  /* ── 3D loop tilt (mouse parallax) ── */
+  var stage = d.getElementById('loop-stage');
+  var chips = d.getElementById('loop-chips');
+  var hero = d.getElementById('top');
+  if (stage && chips && hero && !reduced) {
+    hero.addEventListener('mousemove', function (e) {
+      var nx = e.clientX / window.innerWidth - 0.5;
+      var ny = e.clientY / window.innerHeight - 0.5;
+      stage.style.transform = 'rotateY(' + (nx * 14).toFixed(2) + 'deg) rotateX(' + (-ny * 10).toFixed(2) + 'deg)';
+      chips.style.transform = 'translate(' + (nx * 12).toFixed(1) + 'px,' + (ny * 10).toFixed(1) + 'px)';
+    }, { passive: true });
+    hero.addEventListener('mouseleave', function () {
+      stage.style.transform = 'rotateY(0deg) rotateX(0deg)';
+      chips.style.transform = 'translate(0,0)';
+    });
+  }
+})();
+</script>
+<script src="assets/i18n.js?v=4"></script>
+<script src="assets/nurtureloop.js?v=4"></script>
+</body>
+</html>

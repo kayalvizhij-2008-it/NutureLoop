@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/><title>NurtureLoop</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..700;1,400..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { colors: { "on-primary": "#ffffff", "surface-container-highest": "#e7e1de", "inverse-surface": "#32302e", "surface-variant": "#e7e1de", "on-primary-fixed": "#3a0b00", "surface-bright": "#fef8f4", "secondary-fixed": "#d8e7d5", "on-tertiary-fixed": "#2a1800", "tertiary-fixed-dim": "#fdba5e", "surface-container-lowest": "#ffffff", "secondary-container": "#d8e7d5", "on-primary-fixed-variant": "#783119", "secondary-fixed-dim": "#bccab9", "on-tertiary-container": "#fffbff", "surface-container-low": "#f8f2ef", "outline-variant": "#dac1ba", "primary": "#93452b", "on-error": "#ffffff", "on-tertiary-fixed-variant": "#643f00", "secondary": "#556254", "tertiary-container": "#a06911", "inverse-on-surface": "#f6f0ec", "on-error-container": "#93000a", "background": "#fef8f4", "primary-container": "#b25d41", "on-secondary": "#ffffff", "tertiary": "#815200", "error-container": "#ffdad6", "primary-fixed": "#ffdbd0", "on-secondary-fixed": "#131e13", "on-surface": "#1d1b19", "surface-dim": "#ded9d5", "inverse-primary": "#ffb59e", "surface-container": "#f3ede9", "on-secondary-fixed-variant": "#3d4a3d", "error": "#ba1a1a", "on-secondary-container": "#5b685a", "on-tertiary": "#ffffff", "on-surface-variant": "#55433d", "on-background": "#1d1b19", "surface-tint": "#96472d", "surface-container-high": "#ede7e3", "outline": "#88726c", "surface": "#fef8f4", "on-primary-container": "#fffbff", "primary-fixed-dim": "#ffb59e", "tertiary-fixed": "#ffddb6" }, borderRadius: { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, spacing: { "margin": "1.25rem", "space-lg": "1.5rem", "gutter-tablet": "1.5rem", "gutter": "1rem", "space-xl": "2.5rem", "space-sm": "0.5rem", "space-md": "1rem", "margin-tablet": "2rem", "space-xs": "0.25rem" }, fontFamily: { "headline-md": ["Playfair Display"], "label-sm": ["Plus Jakarta Sans"], "body-lg": ["Plus Jakarta Sans"], "label-md": ["Plus Jakarta Sans"], "body-md": ["Plus Jakarta Sans"], "headline-lg-mobile": ["Playfair Display"], "display-mobile": ["Playfair Display"], "headline-lg": ["Playfair Display"], "title-md": ["Plus Jakarta Sans"], "display": ["Playfair Display"], "title-lg": ["Plus Jakarta Sans"], "body-sm": ["Plus Jakarta Sans"] }, fontSize: { "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "500" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "500" }], "body-lg": ["16px", { "lineHeight": "26px", "fontWeight": "400" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }], "body-md": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "500" }], "display-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["30px", { "lineHeight": "38px", "fontWeight": "500" }], "title-md": ["16px", { "lineHeight": "24px", "fontWeight": "600" }], "display": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "title-lg": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "body-sm": ["13px", { "lineHeight": "19px", "fontWeight": "400" }] } } } };</script><style>@layer base{html,body{width:100%;margin:0;padding:0;}body{overscroll-behavior-y:none;-webkit-tap-highlight-color:transparent;}.pb-safe{padding-bottom:env(safe-area-inset-bottom,0px);}.pt-safe{padding-top:env(safe-area-inset-top,0px);}}::-webkit-scrollbar{display:none;}.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24;}</style><style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head><body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-secondary-fixed selection:text-on-secondary-fixed"><header class="fixed top-0 inset-x-0 z-50 bg-surface/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(37,35,33,0.04)] pt-safe"><div class="h-16 px-margin flex items-center justify-between"><div class="flex items-center gap-space-sm"><img alt="NurtureLoop Emblem" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDz-yB4N7cUeN4GIq0ANhmvmaWhlBgwD1dQwWMgI9Dud_rv1osqDp6kbGeNs4HpRjYU-6IpfJKnLx1oV8K8uj42vQEyGd9HHrXCqXPPLpl6Mw9dbfK1A9vtiGPrCMHlWNrxjZLUi8ipLi3YzVlO9uFQYpoJosZOnD5ga46ZzWuYnrNu3QPmyW3MinBrxG5sy-QUNv7cJKELv4LKO58qYq5EepTtX8z4hnya0848esRDp-LaqcXAnHRP-A"/><div class="flex flex-col"><span class="font-headline-md text-headline-md text-primary tracking-tight leading-none">NurtureLoop</span><span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase mt-0.5">Care</span></div></div><div class="flex items-center"><a class="relative p-0.5 rounded-full ring-1 ring-outline-variant/60 hover:ring-primary transition-all duration-300" data-path="more" href="more.html"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu_mp4Isxp3hkX06uB4iuWGYm1Am8Vihc3xIRlcutirTX8ZeuXwe_iHLMr4cOj5bW9RLN5HMghlvfDSjPGU-LG7sNxrumUG3FGQ1Pg2PVpL7VEsf9UVqWG-eThG-8smlM7oESSREwXPfH5o7yTqocsIwgkvNKtmX4DTYtDjrv4AHfkqqQDuq19mSI9J2J40_ufnSRFmx8RDDnXZgmQhgudt4yJGo10Bc4H4mQudmB_hAhmtiF6tsFP0w"/></a></div></div></header><main class="flex-1 w-full pt-16 bg-surface pb-24"><div class="flex flex-col w-full">
+<div class="hidden" data-nl-offline-panel></div>
+<div class="px-margin pt-4 pb-6">
+<div class="flex items-center gap-space-xs mb-1">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">Postpartum Continuum</span>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">Your care plan</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Prepared by your care team for quiet, steady healing</p>
+<div class="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span class="font-label-sm text-label-sm" data-nl-skip>Dr. Ananya Rao · City Maternity Hospital · Updated 14 Oct</span>
+</div>
+</div>
+<div class="px-margin mb-5">
+<div class="bg-surface-container-low rounded-xl p-1.5 flex items-center justify-between shadow-sm">
+<div class="flex items-center gap-1" id="language-switcher">
+<button class="lang-pill px-3 py-1 rounded-lg bg-surface-container-lowest text-primary font-label-md text-label-md shadow-xs transition-all" data-lang-btn="en" type="button">
+          English
+        </button>
+<button class="lang-pill px-3 py-1 rounded-lg text-secondary hover:text-on-surface font-label-md text-label-md transition-all" data-lang-btn="ta" type="button">
+          தமிழ்
+        </button>
+<button class="lang-pill px-3 py-1 rounded-lg text-secondary hover:text-on-surface font-label-md text-label-md transition-all" data-lang-btn="hi" type="button">
+          हिन्दी
+        </button>
+</div>
+<button class="flex items-center gap-1.5 px-3 py-1 rounded-lg text-primary hover:bg-surface-container-high transition-colors" id="read-aloud-btn" type="button" data-nl-speak="read-plan">
+<span class="material-symbols-outlined text-[18px]">volume_up</span>
+<span class="font-label-sm text-label-sm font-semibold">Listen</span>
+</button>
+</div>
+</div>
+<div class="px-margin flex flex-col gap-4">
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 left-0 bottom-0 w-1 bg-primary"></div>
+<div class="flex items-start justify-between gap-2">
+<div>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-wider font-semibold">Upcoming Appointment</span>
+<h2 class="font-title-md text-title-md text-on-surface mt-0.5">Postpartum Follow-up Visit</h2>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-container text-on-secondary-fixed font-label-sm text-label-sm whitespace-nowrap">Day 14</span>
+</div>
+<div class="mt-3 flex flex-col gap-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">calendar_today</span>
+<span>15 October, 10:30 AM · City Maternity Hospital</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">inventory_2</span>
+<span>Bring: Discharge summary, requested CBC blood panel</span>
+</div>
+</div>
+<div class="mt-4 pt-3 flex items-center justify-between border-t border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary text-[18px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm text-tertiary">Clarity translation active</span>
+</div>
+<button class="flex items-center gap-1 text-primary hover:opacity-80 transition-opacity" id="quick-playback" type="button" data-nl-speak="read-plan">
+<span class="material-symbols-outlined text-[16px]">graphic_eq</span>
+<span class="font-label-sm text-label-sm underline underline-offset-4">Audio note (0:48)</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-xl p-1.5 flex gap-1 shadow-xs">
+<button class="flex-1 py-2 px-3 rounded-lg bg-surface-container-lowest text-primary font-title-md text-body-sm text-center shadow-xs transition-all flex items-center justify-center gap-1.5" id="tab-easier" type="button">
+<span class="material-symbols-outlined text-[16px]">spa</span>
+<span>Made easier to understand</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-lg text-secondary hover:text-on-surface font-title-md text-body-sm text-center transition-all flex items-center justify-center gap-1.5" id="tab-original" type="button">
+<span class="material-symbols-outlined text-[16px]">description</span>
+<span>Original instruction</span>
+</button>
+</div>
+<div class="bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-opacity duration-200" id="panel-easier">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">lightbulb</span>
+<h3 class="font-title-lg text-title-lg text-on-surface">Plain language breakdown</h3>
+</div>
+<span class="font-label-sm text-label-sm text-secondary bg-surface-container px-2 py-0.5 rounded-full">3 steps</span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex gap-3 items-start">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5 font-semibold">1</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface">What this visit is for</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Checking how your body is healing gently, observing incision stitches, and ensuring your energy levels, sleep rhythm, and mood are comfortably supported.</p>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high w-full"></div>
+<div class="flex gap-3 items-start">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5 font-semibold">2</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface">What to have ready</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Your green discharge envelope from hospital discharge and the physical copy of the CBC blood test report collected last Friday.</p>
+<div class="mt-2 inline-flex items-center gap-1 px-2 py-1 rounded bg-surface-container text-secondary text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">attach_file</span>
+<span>Available in your document vault</span>
+</div>
+</div>
+</div>
+<div class="h-[1px] bg-surface-container-high w-full"></div>
+<div class="flex gap-3 items-start">
+<div class="w-6 h-6 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm flex items-center justify-center shrink-0 mt-0.5 font-semibold">3</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-title-md text-on-surface">Your support person</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mt-0.5">Ravi or Anita can accompany you directly into the consultation room to help hold the baby while Dr. Rao completes physical palpation.</p>
+</div>
+</div>
+</div>
+<div class="mt-5 p-3.5 rounded-xl bg-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-secondary text-[20px]">psychology_alt</span>
+<span class="font-body-sm text-body-sm text-on-surface">Need another translation nuance?</span>
+</div>
+<button class="font-label-sm text-label-sm text-primary font-semibold hover:underline" data-nl-sheet="voice" type="button">Ask Clarifier</button>
+</div>
+</div>
+<div class="hidden bg-surface-container-lowest rounded-xl p-5 shadow-sm transition-opacity duration-200" id="panel-original">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Clinician Original EMR Record</span>
+<span class="material-symbols-outlined text-secondary text-[18px]">lock</span>
+</div>
+<div class="p-3 bg-surface-container rounded-lg font-body-sm text-body-sm text-on-surface-variant leading-relaxed" data-nl-skip>
+        "Pt to report for 2-wk postpartum evaluation on 15-10. Monitor lochial progression, assess uterine involution via bimanual palpation, inspect perineal/caesarean wound integrity. Bring hospital discharge folder, complete hemogram panel (Hb/platelet count). Caregiver accompaniment recommended for infant support during examination."
+      </div>
+<p class="font-label-sm text-label-sm text-secondary mt-2.5 italic" data-nl-skip>Signed: Dr. Ananya Rao, MD (OB/GYN), Reg #48102</p>
+<p class="font-label-sm text-label-sm text-secondary mt-2">Your care team keeps the original wording on record — NurtureLoop only makes it easier to read.</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-4 flex items-center gap-3">
+<img class="w-12 h-12 rounded-full object-cover shrink-0" data-alt="A comforting warm still life of Ayurvedic postpartum herbs, ginger infusion in a handcrafted ceramic cup, and gentle sunlight on handmade paper" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3guGAghTh_rmf2gjCqGtcDHbKHwjfnNxYcFUvbROkyxzwDcFY5B7a5jUvnC-Auzm9CXzpW-kT0yIeswyqz20qID-cF0bBOPWYjpJz_d4u9j0RI_HtxA6dGc7-5ns-L62SaXPh0lFhPI22dBgVzbkhi4y6VKOujxAvuxYkfzbseP1mvAn-DnoTiuDjvbxf7L3Fr3VH8vS3DCwzMOgwTZJUTE4QJVAnblH3Lqdax85wfSCtiwRg84w3AQ"/>
+<div class="min-w-0">
+<h4 class="font-title-md text-body-md text-on-surface leading-tight">Postpartum Doula Reflection</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Take unhurried steps tomorrow morning. Drink warm cumin water before heading out.</p>
+</div>
+</div>
+<div class="flex flex-col gap-2.5 pt-2 mb-2">
+<button class="w-full h-12 rounded-xl bg-primary text-on-primary font-title-md text-title-md flex items-center justify-center gap-2 hover:opacity-95 active:scale-[0.99] transition-all shadow-sm" id="btn-offline" type="button" data-nl-offline-toggle>
+<span class="material-symbols-outlined text-[20px]">download_for_offline</span>
+<span>Save to offline notes</span>
+</button>
+<button class="w-full h-12 rounded-xl bg-surface-container text-on-surface font-title-md text-title-md flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors" type="button" data-nl-sheet="ask">
+<span class="material-symbols-outlined text-secondary text-[20px]">mail</span>
+<span>Send question to Dr. Rao</span>
+</button>
+</div>
+<div class="opacity-0 transition-opacity duration-300 pointer-events-none fixed bottom-20 left-4 right-4 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-md text-center font-body-sm text-body-sm z-50" id="toast">
+      Plan cached securely for offline hospital visit
+    </div>
+</div>
+</div>
+<script>
+  (function() {
+    const tabEasier = document.getElementById('tab-easier');
+    const tabOriginal = document.getElementById('tab-original');
+    const panelEasier = document.getElementById('panel-easier');
+    const panelOriginal = document.getElementById('panel-original');
+    const readBtn = document.getElementById('read-aloud-btn');
+    const quickPlayback = document.getElementById('quick-playback');
+    const offlineBtn = document.getElementById('btn-offline');
+    const toast = document.getElementById('toast');
+
+    function setActiveTab(isEasier) {
+      if (!panelEasier || !panelOriginal) return;
+      if (isEasier) {
+        panelEasier.classList.remove('hidden');
+        panelOriginal.classList.add('hidden');
+        tabEasier.className = 'flex-1 py-2 px-3 rounded-lg bg-surface-container-lowest text-primary font-title-md text-body-sm text-center shadow-xs transition-all flex items-center justify-center gap-1.5';
+        tabOriginal.className = 'flex-1 py-2 px-3 rounded-lg text-secondary hover:text-on-surface font-title-md text-body-sm text-center transition-all flex items-center justify-center gap-1.5';
+      } else {
+        panelEasier.classList.add('hidden');
+        panelOriginal.classList.remove('hidden');
+        tabOriginal.className = 'flex-1 py-2 px-3 rounded-lg bg-surface-container-lowest text-primary font-title-md text-body-sm text-center shadow-xs transition-all flex items-center justify-center gap-1.5';
+        tabEasier.className = 'flex-1 py-2 px-3 rounded-lg text-secondary hover:text-on-surface font-title-md text-body-sm text-center transition-all flex items-center justify-center gap-1.5';
+      }
+      if (window.NL && NL.applyLang) NL.applyLang(document.body);
+    }
+
+    if (tabEasier && tabOriginal) {
+      tabEasier.addEventListener('click', () => setActiveTab(true));
+      tabOriginal.addEventListener('click', () => setActiveTab(false));
+    }
+
+    let isPlaying = false;
+    function toggleAudio() {
+      isPlaying = !isPlaying;
+      const icon = readBtn.querySelector('.material-symbols-outlined');
+      const text = readBtn.querySelector('span:last-child');
+      if (isPlaying) {
+        icon.textContent = 'pause_circle';
+        text.textContent = 'Playing...';
+        readBtn.classList.add('bg-secondary-container');
+      } else {
+        icon.textContent = 'volume_up';
+        text.textContent = 'Listen';
+        readBtn.classList.remove('bg-secondary-container');
+        if (window.NL) NL.stopSpeak();
+      }
+    }
+    readBtn.addEventListener('click', toggleAudio);
+    if (quickPlayback) quickPlayback.addEventListener('click', function (e) { e.stopPropagation(); toggleAudio(); });
+
+    if (offlineBtn && toast) {
+      offlineBtn.addEventListener('click', () => {
+        toast.classList.remove('opacity-0');
+        setTimeout(() => { toast.classList.add('opacity-0'); }, 2500);
+      });
+    }
+  })();
+</script></main><nav class="fixed bottom-0 inset-x-0 z-50 pb-safe bg-surface/95 backdrop-blur-xl shadow-[0_-2px_12px_rgba(37,35,33,0.04)]" data-active-classes="text-primary font-semibold"><div class="flex justify-around items-center h-16 px-gutter"><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="home" href="app.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">spa</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Home</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="journey" href="journey.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">auto_stories</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Journey</span></a><a aria-current="page" class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 transition-colors duration-200 group text-primary font-semibold" data-path="care" href="care-plan.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">healing</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Care</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="messages" href="more.html#messages"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">chat_bubble_outline</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">Messages</span></a><a class="flex flex-col items-center justify-center min-w-[44px] min-h-[44px] py-1 px-2 text-secondary hover:text-on-surface transition-colors duration-200 group" data-path="more" href="more.html"><span class="material-symbols-outlined text-2xl group-hover:scale-105 transition-transform">more_horiz</span><span class="font-label-sm text-label-sm mt-0.5 tracking-wide">More</span></a></div></nav><script src="assets/i18n.js?v=4"></script><script src="assets/nurtureloop.js?v=4"></script></body></html>
